@@ -1,0 +1,313 @@
+{
+  "formatVersion": 1,
+  "title": "Guidance Stability Lab matched-seed bundle",
+  "source": {
+    "repository": "guided-cfg-ap",
+    "run": "results/fitted_cfg_ldm_20260710/sd15_g12_N12_n1000",
+    "model": "runwayml/stable-diffusion-v1-5",
+    "scheduler": "deterministic DDIM",
+    "guidanceScale": 12.0,
+    "w": 11.0,
+    "numSteps": 12,
+    "sourceTreeSha256": "d954e5686324ac71c6867afdf68b94d0db44c0cb1fc0642f92f1a3c284fead4a",
+    "selection": "Primary sample p0036 was chosen for visual legibility after ranking the first 64 matched prompts by CFG-minus-fitted saturation. Additional examples are fixed."
+  },
+  "samples": [
+    {
+      "promptIndex": 36,
+      "prompt": "a group of people riding skis on a snowy surface",
+      "seed": 20300036,
+      "schemes": {
+        "cfg": {
+          "image": "/demo/final/p0036-cfg.webp",
+          "mask": "/demo/final/p0036-cfg-mask.webp",
+          "sha256": "dfddc43bec260a6d0934ae0e7f8b39bbf9cafeb07bc43cf9797b5192b44a3623",
+          "saturation": 0.1387837827205658,
+          "contrast": 0.29766416549682617,
+          "laplacianEnergy": 0.0784073919057846,
+          "latentNormMax": 128.61241149902344,
+          "clipScore": 0.3154754042625427
+        },
+        "fitted": {
+          "image": "/demo/final/p0036-fitted.webp",
+          "mask": "/demo/final/p0036-fitted-mask.webp",
+          "sha256": "f7ea0295b138f1c011d6b5099c130aceab94f3f069fb375d9f6d31d4dfa9118c",
+          "saturation": 0.039073944091796875,
+          "contrast": 0.24211689829826355,
+          "laplacianEnergy": 0.09515609592199326,
+          "latentNormMax": 128.16860961914062,
+          "clipScore": 0.29401057958602905
+        },
+        "interval": {
+          "image": "/demo/final/p0036-interval.webp",
+          "mask": "/demo/final/p0036-interval-mask.webp",
+          "sha256": "3a201b225ef3ce90973a6b84cacc76ab2488873f7a06cb5cb5556eeeb8232174",
+          "saturation": 0.004343668930232525,
+          "contrast": 0.21999099850654602,
+          "laplacianEnergy": 0.09022139012813568,
+          "latentNormMax": 128.14215087890625,
+          "clipScore": 0.2865902781486511
+        }
+      }
+    },
+    {
+      "promptIndex": 37,
+      "prompt": "A bowl with rice, broccoli and a purple relish.",
+      "seed": 20300037,
+      "schemes": {
+        "cfg": {
+          "image": "/demo/final/p0037-cfg.webp",
+          "mask": "/demo/final/p0037-cfg-mask.webp",
+          "sha256": "6f1ce16c0c23cbc3b2a73fdf43d01d44e657a8209915d408d6555164b1e09538",
+          "saturation": 0.12812551856040955,
+          "contrast": 0.316363662481308,
+          "laplacianEnergy": 0.09069880843162537,
+          "latentNormMax": 128.92559814453125,
+          "clipScore": 0.3611052930355072
+        },
+        "fitted": {
+          "image": "/demo/final/p0037-fitted.webp",
+          "mask": "/demo/final/p0037-fitted-mask.webp",
+          "sha256": "2fe7e0a3df5016ef7278566ba166d27fc7f8472ccf977954d83ee8bab772f9fb",
+          "saturation": 0.0039952597580850124,
+          "contrast": 0.2282995730638504,
+          "laplacianEnergy": 0.10554710030555725,
+          "latentNormMax": 127.74565887451172,
+          "clipScore": 0.3734731674194336
+        },
+        "interval": {
+          "image": "/demo/final/p0037-interval.webp",
+          "mask": "/demo/final/p0037-interval-mask.webp",
+          "sha256": "8fd7f663e392daaa587c913b10a5618643a331c9253ad60fcc97d6b0047497f5",
+          "saturation": 0.0002886454458348453,
+          "contrast": 0.17242147028446198,
+          "laplacianEnergy": 0.12039016932249069,
+          "latentNormMax": 127.68441772460938,
+          "clipScore": 0.3351212739944458
+        }
+      }
+    },
+    {
+      "promptIndex": 3,
+      "prompt": "A stop sign is mounted upside-down on it's post.",
+      "seed": 20300003,
+      "schemes": {
+        "cfg": {
+          "image": "/demo/final/p0003-cfg.webp",
+          "mask": "/demo/final/p0003-cfg-mask.webp",
+          "sha256": "339cbf5fc94fbc58953a5751291e5151a70a7ce4befb2fe8d1b3615005d9fa66",
+          "saturation": 0.08672714233398438,
+          "contrast": 0.30461087822914124,
+          "laplacianEnergy": 0.04344148561358452,
+          "latentNormMax": 127.88716125488281,
+          "clipScore": 0.3200265169143677
+        },
+        "fitted": {
+          "image": "/demo/final/p0003-fitted.webp",
+          "mask": "/demo/final/p0003-fitted-mask.webp",
+          "sha256": "c420f73c520200a0e0802c567a27505737c18f3ff8a0a17e1898c4649c895898",
+          "saturation": 0.02022552490234375,
+          "contrast": 0.2423088699579239,
+          "laplacianEnergy": 0.07985474169254303,
+          "latentNormMax": 126.426025390625,
+          "clipScore": 0.3287007808685303
+        },
+        "interval": {
+          "image": "/demo/final/p0003-interval.webp",
+          "mask": "/demo/final/p0003-interval-mask.webp",
+          "sha256": "c9ffc1522479367effe6738d43eac8809700abe90752196d0f14eba021dc6575",
+          "saturation": 2.161661905120127e-05,
+          "contrast": 0.2132270485162735,
+          "laplacianEnergy": 0.10033255815505981,
+          "latentNormMax": 126.31250762939453,
+          "clipScore": 0.29102087020874023
+        }
+      }
+    },
+    {
+      "promptIndex": 12,
+      "prompt": "some children are riding on a mini orange train",
+      "seed": 20300012,
+      "schemes": {
+        "cfg": {
+          "image": "/demo/final/p0012-cfg.webp",
+          "mask": "/demo/final/p0012-cfg-mask.webp",
+          "sha256": "6c9e7175f0ed9cf10fd8682bc3f92a9a21a0b0b704261216f5c9943a7d67ca76",
+          "saturation": 0.09897105395793915,
+          "contrast": 0.315060555934906,
+          "laplacianEnergy": 0.05538095161318779,
+          "latentNormMax": 128.72409057617188,
+          "clipScore": 0.33226892352104187
+        },
+        "fitted": {
+          "image": "/demo/final/p0012-fitted.webp",
+          "mask": "/demo/final/p0012-fitted-mask.webp",
+          "sha256": "b24a8db181fc943fc02737291695e0dd1b78fea24abd9dff218319c9470a814b",
+          "saturation": 0.001068115234375,
+          "contrast": 0.2380772978067398,
+          "laplacianEnergy": 0.06844993680715561,
+          "latentNormMax": 127.97081756591797,
+          "clipScore": 0.31628674268722534
+        },
+        "interval": {
+          "image": "/demo/final/p0012-interval.webp",
+          "mask": "/demo/final/p0012-interval-mask.webp",
+          "sha256": "71ed1d3141154e3fdaca07d42469b29eafca298822ea4016011e0a4b3603d509",
+          "saturation": 0.0004297892446629703,
+          "contrast": 0.20010580122470856,
+          "laplacianEnergy": 0.06715710461139679,
+          "latentNormMax": 127.85404968261719,
+          "clipScore": 0.257564902305603
+        }
+      }
+    },
+    {
+      "promptIndex": 15,
+      "prompt": "A computer on a desk next to a laptop.",
+      "seed": 20300015,
+      "schemes": {
+        "cfg": {
+          "image": "/demo/final/p0015-cfg.webp",
+          "mask": "/demo/final/p0015-cfg-mask.webp",
+          "sha256": "a9a714fa175fd42b75e549200345e7829f2417b3a15d3b2977d02aafda30d6ae",
+          "saturation": 0.09124755859375,
+          "contrast": 0.2975021004676819,
+          "laplacianEnergy": 0.06173926219344139,
+          "latentNormMax": 128.1001434326172,
+          "clipScore": 0.2732260525226593
+        },
+        "fitted": {
+          "image": "/demo/final/p0015-fitted.webp",
+          "mask": "/demo/final/p0015-fitted-mask.webp",
+          "sha256": "c5f444e48b90f0f4173cb5a5d0253286943eeb97863611580da5e92ee4159a07",
+          "saturation": 0.0,
+          "contrast": 0.15601041913032532,
+          "laplacianEnergy": 0.07369597256183624,
+          "latentNormMax": 127.10608673095703,
+          "clipScore": 0.2766433358192444
+        },
+        "interval": {
+          "image": "/demo/final/p0015-interval.webp",
+          "mask": "/demo/final/p0015-interval-mask.webp",
+          "sha256": "0c411a9519f664d8f5f85b668080a66a24e40a76a79237f8d2b7790fbf377af6",
+          "saturation": 0.0,
+          "contrast": 0.11642853915691376,
+          "laplacianEnergy": 0.08271386474370956,
+          "latentNormMax": 127.15042877197266,
+          "clipScore": 0.2224920094013214
+        }
+      }
+    },
+    {
+      "promptIndex": 20,
+      "prompt": "A zebra in the grass who is cleaning himself.",
+      "seed": 20300020,
+      "schemes": {
+        "cfg": {
+          "image": "/demo/final/p0020-cfg.webp",
+          "mask": "/demo/final/p0020-cfg-mask.webp",
+          "sha256": "7a9d4878e83fe0b99b2cb051db08b4f198b61f995e8456caae09e1fe85ae3cc2",
+          "saturation": 0.06466802209615707,
+          "contrast": 0.27032697200775146,
+          "laplacianEnergy": 0.0963987335562706,
+          "latentNormMax": 127.91214752197266,
+          "clipScore": 0.33568131923675537
+        },
+        "fitted": {
+          "image": "/demo/final/p0020-fitted.webp",
+          "mask": "/demo/final/p0020-fitted-mask.webp",
+          "sha256": "af562fdf107c9a2e6a5ac2b946aa94d7e80a12182eb723c4f41a326ac59d16e8",
+          "saturation": 0.00011571248614927754,
+          "contrast": 0.18708667159080505,
+          "laplacianEnergy": 0.13577324151992798,
+          "latentNormMax": 127.85834503173828,
+          "clipScore": 0.3386058807373047
+        },
+        "interval": {
+          "image": "/demo/final/p0020-interval.webp",
+          "mask": "/demo/final/p0020-interval-mask.webp",
+          "sha256": "8617fe0ed166bde39fa0b0c6d6f3f67588a5f78f9abd5d79a17795e032b76f65",
+          "saturation": 0.0,
+          "contrast": 0.12668980658054352,
+          "laplacianEnergy": 0.15308642387390137,
+          "latentNormMax": 127.86264038085938,
+          "clipScore": 0.2750099003314972
+        }
+      }
+    },
+    {
+      "promptIndex": 23,
+      "prompt": "A large white bowl of many green apples.",
+      "seed": 20300023,
+      "schemes": {
+        "cfg": {
+          "image": "/demo/final/p0023-cfg.webp",
+          "mask": "/demo/final/p0023-cfg-mask.webp",
+          "sha256": "9f730557c7d183ce5e2cef5bc1f4646bb5477a20dda6294c6f43b13eff49e7d9",
+          "saturation": 0.17890676856040955,
+          "contrast": 0.36139899492263794,
+          "laplacianEnergy": 0.04866407439112663,
+          "latentNormMax": 134.76722717285156,
+          "clipScore": 0.328793466091156
+        },
+        "fitted": {
+          "image": "/demo/final/p0023-fitted.webp",
+          "mask": "/demo/final/p0023-fitted-mask.webp",
+          "sha256": "a321ece725e009cfa3e6c860c1cf98e5a5a6c501e165088c8821b173a1904a4a",
+          "saturation": 0.045623779296875,
+          "contrast": 0.28297197818756104,
+          "laplacianEnergy": 0.09401655197143555,
+          "latentNormMax": 128.23060607910156,
+          "clipScore": 0.29637593030929565
+        },
+        "interval": {
+          "image": "/demo/final/p0023-interval.webp",
+          "mask": "/demo/final/p0023-interval-mask.webp",
+          "sha256": "523078b2fca7d0283445fac0692f56b4f163a29a49bc58c1528e959b2481f0e8",
+          "saturation": 0.00462214183062315,
+          "contrast": 0.22408872842788696,
+          "laplacianEnergy": 0.12263123691082001,
+          "latentNormMax": 128.17959594726562,
+          "clipScore": 0.24022513628005981
+        }
+      }
+    },
+    {
+      "promptIndex": 40,
+      "prompt": "a chicken meal with carrots broccoli and rice",
+      "seed": 20300040,
+      "schemes": {
+        "cfg": {
+          "image": "/demo/final/p0040-cfg.webp",
+          "mask": "/demo/final/p0040-cfg-mask.webp",
+          "sha256": "b4d420802f06661a6eb579c8f1fcc42b1479737428c45341cbe8b4cd0a11539d",
+          "saturation": 0.06484095752239227,
+          "contrast": 0.28478488326072693,
+          "laplacianEnergy": 0.06963397562503815,
+          "latentNormMax": 129.10885620117188,
+          "clipScore": 0.35347938537597656
+        },
+        "fitted": {
+          "image": "/demo/final/p0040-fitted.webp",
+          "mask": "/demo/final/p0040-fitted-mask.webp",
+          "sha256": "85c37e59fb9b2d4cfdf33f4e9888f476a07de5cb3706e04075a78137c726152c",
+          "saturation": 0.00021616618323605508,
+          "contrast": 0.22215653955936432,
+          "laplacianEnergy": 0.10239597409963608,
+          "latentNormMax": 128.9268035888672,
+          "clipScore": 0.33335599303245544
+        },
+        "interval": {
+          "image": "/demo/final/p0040-interval.webp",
+          "mask": "/demo/final/p0040-interval-mask.webp",
+          "sha256": "fe89647abf11c9db9496a3f5648cf1fc9c971831649186ddcf473669a2bcd0b6",
+          "saturation": 2.543131631682627e-05,
+          "contrast": 0.17380303144454956,
+          "laplacianEnergy": 0.10993419587612152,
+          "latentNormMax": 128.944091796875,
+          "clipScore": 0.24887092411518097
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,543 @@
+{
+  "formatVersion": 1,
+  "cifar": {
+    "dataset": "CIFAR-10 EDM",
+    "samplesPerCell": 5000,
+    "source": "results/fitted_cfg_cifar_corrected_grid_20260710/aggregate/cifar_coefficient_combined.csv",
+    "cells": [
+      {
+        "w": 4.0,
+        "n": 8,
+        "schemes": {
+          "cfg": {
+            "fid": 27.057061349062916,
+            "kid": 0.010383476746108533,
+            "ampP95": 1.0907549858093262,
+            "clipP95": 0.1653645932674408,
+            "targetAccuracy": 0.9914,
+            "targetConfidence": 0.9895326354980468,
+            "terminalCoefficient": -4.0
+          },
+          "fitted": {
+            "fid": 25.389300889629766,
+            "kid": 0.017316631632588213,
+            "ampP95": 1.0460540056228638,
+            "clipP95": 0.0,
+            "targetAccuracy": 0.9466,
+            "targetConfidence": 0.94266416015625,
+            "terminalCoefficient": 0.0
+          },
+          "interval": {
+            "fid": 26.784092702436496,
+            "kid": 0.02211385794046163,
+            "ampP95": 1.055309772491455,
+            "clipP95": 0.0,
+            "targetAccuracy": 0.8938,
+            "targetConfidence": 0.8863367858886719,
+            "terminalCoefficient": 0.0
+          }
+        }
+      },
+      {
+        "w": 4.0,
+        "n": 16,
+        "schemes": {
+          "cfg": {
+            "fid": 21.579780676433337,
+            "kid": 0.006858797534062262,
+            "ampP95": 1.116460919380188,
+            "clipP95": 0.2262369841337204,
+            "targetAccuracy": 0.9922,
+            "targetConfidence": 0.9911639221191406,
+            "terminalCoefficient": -4.0
+          },
+          "fitted": {
+            "fid": 16.150442446293912,
+            "kid": 0.006798480807358747,
+            "ampP95": 1.0926306247711182,
+            "clipP95": 0.0048828125,
+            "targetAccuracy": 0.9918,
+            "targetConfidence": 0.9905934753417969,
+            "terminalCoefficient": 0.0
+          },
+          "interval": {
+            "fid": 13.07212162922158,
+            "kid": 0.007885155693000825,
+            "ampP95": 1.0946242809295654,
+            "clipP95": 0.0006510416860692203,
+            "targetAccuracy": 0.9408,
+            "targetConfidence": 0.9361607421875,
+            "terminalCoefficient": 0.0
+          }
+        }
+      },
+      {
+        "w": 4.0,
+        "n": 32,
+        "schemes": {
+          "cfg": {
+            "fid": 20.14855476955331,
+            "kid": 0.006068800728203443,
+            "ampP95": 1.0446698665618896,
+            "clipP95": 0.2614094614982605,
+            "targetAccuracy": 0.99,
+            "targetConfidence": 0.9876872802734376,
+            "terminalCoefficient": -4.0
+          },
+          "fitted": {
+            "fid": 15.898878523881585,
+            "kid": 0.005029423507197337,
+            "ampP95": 1.0685319900512695,
+            "clipP95": 0.0683755874633789,
+            "targetAccuracy": 0.9936,
+            "targetConfidence": 0.992709033203125,
+            "terminalCoefficient": 0.0
+          },
+          "interval": {
+            "fid": 10.701675750073825,
+            "kid": 0.003320316165097652,
+            "ampP95": 1.098574161529541,
+            "clipP95": 0.0185546875,
+            "targetAccuracy": 0.9694,
+            "targetConfidence": 0.9664317199707031,
+            "terminalCoefficient": 0.0
+          }
+        }
+      },
+      {
+        "w": 6.5,
+        "n": 8,
+        "schemes": {
+          "cfg": {
+            "fid": 25.65798868412865,
+            "kid": 0.005849869150655276,
+            "ampP95": 7.834705829620361,
+            "clipP95": 0.3873860239982605,
+            "targetAccuracy": 0.9804,
+            "targetConfidence": 0.9786961242675781,
+            "terminalCoefficient": -6.5
+          },
+          "fitted": {
+            "fid": 25.59798631149643,
+            "kid": 0.017590175155706975,
+            "ampP95": 1.408556342124939,
+            "clipP95": 0.0,
+            "targetAccuracy": 0.9456,
+            "targetConfidence": 0.9412109497070312,
+            "terminalCoefficient": 0.0
+          },
+          "interval": {
+            "fid": 27.06652710022668,
+            "kid": 0.022007991123362682,
+            "ampP95": 1.3850226402282715,
+            "clipP95": 0.0,
+            "targetAccuracy": 0.8904,
+            "targetConfidence": 0.8865800903320312,
+            "terminalCoefficient": 0.0
+          }
+        }
+      },
+      {
+        "w": 6.5,
+        "n": 16,
+        "schemes": {
+          "cfg": {
+            "fid": 24.36273555552969,
+            "kid": 0.00682433655167217,
+            "ampP95": 1.9412283897399902,
+            "clipP95": 0.4785480499267578,
+            "targetAccuracy": 0.9698,
+            "targetConfidence": 0.9659680297851563,
+            "terminalCoefficient": -6.5
+          },
+          "fitted": {
+            "fid": 17.207599564956695,
+            "kid": 0.007247227152478111,
+            "ampP95": 1.4215348958969116,
+            "clipP95": 0.007486979477107525,
+            "targetAccuracy": 0.9916,
+            "targetConfidence": 0.9901615783691406,
+            "terminalCoefficient": 0.0
+          },
+          "interval": {
+            "fid": 12.780192460151277,
+            "kid": 0.007803054389894131,
+            "ampP95": 1.4326162338256836,
+            "clipP95": 0.0006510416860692203,
+            "targetAccuracy": 0.9492,
+            "targetConfidence": 0.9447165405273438,
+            "terminalCoefficient": 0.0
+          }
+        }
+      },
+      {
+        "w": 6.5,
+        "n": 32,
+        "schemes": {
+          "cfg": {
+            "fid": 27.204592199837187,
+            "kid": 0.010275883292056451,
+            "ampP95": 2.2882556915283203,
+            "clipP95": 0.5654458999633789,
+            "targetAccuracy": 0.9586,
+            "targetConfidence": 0.9547896911621093,
+            "terminalCoefficient": -6.5
+          },
+          "fitted": {
+            "fid": 17.83621261249712,
+            "kid": 0.005650498748783841,
+            "ampP95": 1.4031450748443604,
+            "clipP95": 0.10354804992675781,
+            "targetAccuracy": 0.9946,
+            "targetConfidence": 0.9937290405273438,
+            "terminalCoefficient": 0.0
+          },
+          "interval": {
+            "fid": 8.839005263699125,
+            "kid": 0.00309469961806641,
+            "ampP95": 1.448082685470581,
+            "clipP95": 0.0052083334885537624,
+            "targetAccuracy": 0.9522,
+            "targetConfidence": 0.9497187622070312,
+            "terminalCoefficient": 0.0
+          }
+        }
+      },
+      {
+        "w": 8.0,
+        "n": 8,
+        "schemes": {
+          "cfg": {
+            "fid": 32.45215347478984,
+            "kid": 0.010840689880581608,
+            "ampP95": 13.311089515686035,
+            "clipP95": 0.5729166865348816,
+            "targetAccuracy": 0.9542,
+            "targetConfidence": 0.9494445861816406,
+            "terminalCoefficient": -8.0
+          },
+          "fitted": {
+            "fid": 25.224480835957138,
+            "kid": 0.017631015886106622,
+            "ampP95": 1.638642430305481,
+            "clipP95": 0.0,
+            "targetAccuracy": 0.9484,
+            "targetConfidence": 0.9435432861328125,
+            "terminalCoefficient": 0.0
+          },
+          "interval": {
+            "fid": 26.56306110813356,
+            "kid": 0.021597792556797894,
+            "ampP95": 1.6234922409057617,
+            "clipP95": 0.0,
+            "targetAccuracy": 0.8958,
+            "targetConfidence": 0.8904102172851562,
+            "terminalCoefficient": 0.0
+          }
+        }
+      },
+      {
+        "w": 8.0,
+        "n": 16,
+        "schemes": {
+          "cfg": {
+            "fid": 30.42395676790654,
+            "kid": 0.011289533078864173,
+            "ampP95": 6.971230983734131,
+            "clipP95": 0.6497396230697632,
+            "targetAccuracy": 0.945,
+            "targetConfidence": 0.9384369384765625,
+            "terminalCoefficient": -8.0
+          },
+          "fitted": {
+            "fid": 17.055133693905567,
+            "kid": 0.0070039588918598605,
+            "ampP95": 1.6677433252334595,
+            "clipP95": 0.0061848959885537624,
+            "targetAccuracy": 0.9926,
+            "targetConfidence": 0.9910587768554687,
+            "terminalCoefficient": 0.0
+          },
+          "interval": {
+            "fid": 12.773948942816457,
+            "kid": 0.007370306470769949,
+            "ampP95": 1.6636899709701538,
+            "clipP95": 0.0006510416860692203,
+            "targetAccuracy": 0.9438,
+            "targetConfidence": 0.939586181640625,
+            "terminalCoefficient": 0.0
+          }
+        }
+      },
+      {
+        "w": 8.0,
+        "n": 32,
+        "schemes": {
+          "cfg": {
+            "fid": 36.688986320732695,
+            "kid": 0.017948968598336956,
+            "ampP95": 5.683412075042725,
+            "clipP95": 0.7340657114982605,
+            "targetAccuracy": 0.9038,
+            "targetConfidence": 0.894729296875,
+            "terminalCoefficient": -8.0
+          },
+          "fitted": {
+            "fid": 18.672399600820864,
+            "kid": 0.005896164515433524,
+            "ampP95": 1.6455700397491455,
+            "clipP95": 0.1279296875,
+            "targetAccuracy": 0.9954,
+            "targetConfidence": 0.9943177795410156,
+            "terminalCoefficient": 0.0
+          },
+          "interval": {
+            "fid": 8.629247132770557,
+            "kid": 0.0028491333104562378,
+            "ampP95": 1.6970781087875366,
+            "clipP95": 0.0052083334885537624,
+            "targetAccuracy": 0.9488,
+            "targetConfidence": 0.9456888854980469,
+            "terminalCoefficient": 0.0
+          }
+        }
+      }
+    ]
+  },
+  "latentDiffusion": {
+    "dataset": "COCO 2017 validation captions",
+    "model": "Stable Diffusion 1.5",
+    "samplesPerCell": 5000,
+    "cells": [
+      {
+        "id": "sd15_g12_N12_n5000",
+        "label": "g=12, N=12",
+        "summary": {
+          "cfg": {
+            "scheme": "cfg",
+            "model_id": "runwayml/stable-diffusion-v1-5",
+            "guidance_scale": 12.0,
+            "w": 11.0,
+            "num_steps": 12,
+            "num_prompts": 5000,
+            "pixel_saturation_mean": 0.030528502777925837,
+            "pixel_saturation_median": 0.0180028285831213,
+            "pixel_saturation_p95": 0.10401529148221017,
+            "pixel_contrast_mean": 0.252194349463284,
+            "pixel_contrast_median": 0.25538620352745056,
+            "pixel_contrast_p95": 0.32849815338850025,
+            "laplacian_energy_mean": 0.07758375838547946,
+            "laplacian_energy_median": 0.06879756227135658,
+            "laplacian_energy_p95": 0.15249083340168001,
+            "latent_norm_max_mean": 127.66387139434815,
+            "latent_norm_max_median": 127.50968170166016,
+            "latent_norm_max_p95": 129.29753875732422,
+            "clip_score_mean": 0.3145185321956873,
+            "clip_score_median": 0.3133850544691086,
+            "clip_score_p95": 0.3631543755531311
+          },
+          "fitted": {
+            "scheme": "fitted",
+            "model_id": "runwayml/stable-diffusion-v1-5",
+            "guidance_scale": 12.0,
+            "w": 11.0,
+            "num_steps": 12,
+            "num_prompts": 5000,
+            "pixel_saturation_mean": 0.0014610405385403283,
+            "pixel_saturation_median": 0.00018946330237668008,
+            "pixel_saturation_p95": 0.0072774890111759315,
+            "pixel_contrast_mean": 0.18248230771720408,
+            "pixel_contrast_median": 0.18439073115587234,
+            "pixel_contrast_p95": 0.24471357613801958,
+            "laplacian_energy_mean": 0.09037723453827202,
+            "laplacian_energy_median": 0.08391998708248138,
+            "laplacian_energy_p95": 0.15878950804471972,
+            "latent_norm_max_mean": 127.32526593322754,
+            "latent_norm_max_median": 127.31177520751953,
+            "latent_norm_max_p95": 128.51018142700195,
+            "clip_score_mean": 0.3063849821686745,
+            "clip_score_median": 0.3062058389186859,
+            "clip_score_p95": 0.35273973941802983
+          },
+          "interval": {
+            "scheme": "interval",
+            "model_id": "runwayml/stable-diffusion-v1-5",
+            "guidance_scale": 12.0,
+            "w": 11.0,
+            "num_steps": 12,
+            "num_prompts": 5000,
+            "pixel_saturation_mean": 0.00039350917747933635,
+            "pixel_saturation_median": 4.450480264495127e-05,
+            "pixel_saturation_p95": 0.0015312195231672386,
+            "pixel_contrast_mean": 0.16238630009964108,
+            "pixel_contrast_median": 0.16310202330350876,
+            "pixel_contrast_p95": 0.2176046065986157,
+            "laplacian_energy_mean": 0.10414770149216056,
+            "laplacian_energy_median": 0.09799796715378761,
+            "laplacian_energy_p95": 0.17444283589720727,
+            "latent_norm_max_mean": 127.33195407714844,
+            "latent_norm_max_median": 127.31455612182617,
+            "latent_norm_max_p95": 128.50509490966797,
+            "clip_score_mean": 0.26006001360714437,
+            "clip_score_median": 0.2616952955722809,
+            "clip_score_p95": 0.3185233026742935
+          }
+        },
+        "bootstrap": {
+          "fitted": {
+            "scheme": "fitted",
+            "bootstrap_repetitions": 1000,
+            "sat_p95_ratio_lo": 0.06369091920404064,
+            "sat_p95_ratio_med": 0.0704479550201901,
+            "sat_p95_ratio_hi": 0.07681391422839909,
+            "clip_mean_delta_lo": -0.008845229069888593,
+            "clip_mean_delta_med": -0.008132257989048958,
+            "clip_mean_delta_hi": -0.007473651632517576,
+            "stabilization_supported": true,
+            "clip_noninferior": true
+          },
+          "interval": {
+            "scheme": "interval",
+            "bootstrap_repetitions": 1000,
+            "sat_p95_ratio_lo": 0.013061355296802886,
+            "sat_p95_ratio_med": 0.014768954769760156,
+            "sat_p95_ratio_hi": 0.01669064114333553,
+            "clip_mean_delta_lo": -0.055639843090772634,
+            "clip_mean_delta_med": -0.05446035771071911,
+            "clip_mean_delta_hi": -0.05332361028827727,
+            "stabilization_supported": true,
+            "clip_noninferior": false
+          }
+        },
+        "shutdownContrast": {
+          "scheme": "fitted",
+          "reference": "interval",
+          "bootstrap_repetitions": 1000,
+          "sat_p95_ratio_lo": 4.245319619401599,
+          "sat_p95_ratio_med": 4.7969014606809175,
+          "sat_p95_ratio_hi": 5.428682747642345,
+          "clip_mean_delta_lo": 0.045248030029088254,
+          "clip_mean_delta_med": 0.04630604041516781,
+          "clip_mean_delta_hi": 0.04734793320402503
+        }
+      },
+      {
+        "id": "sd15_g7p5_N20_n5000",
+        "label": "g=7.5, N=20",
+        "summary": {
+          "cfg": {
+            "scheme": "cfg",
+            "model_id": "runwayml/stable-diffusion-v1-5",
+            "guidance_scale": 7.5,
+            "w": 6.5,
+            "num_steps": 20,
+            "num_prompts": 5000,
+            "pixel_saturation_mean": 0.01699653724936668,
+            "pixel_saturation_median": 0.007544199703261256,
+            "pixel_saturation_p95": 0.06553580202162267,
+            "pixel_contrast_mean": 0.23966580959558487,
+            "pixel_contrast_median": 0.24282778054475784,
+            "pixel_contrast_p95": 0.31237476617097854,
+            "laplacian_energy_mean": 0.07943112121168525,
+            "laplacian_energy_median": 0.07155721262097359,
+            "laplacian_energy_p95": 0.15209868922829634,
+            "latent_norm_max_mean": 127.71254150848388,
+            "latent_norm_max_median": 127.69847869873047,
+            "latent_norm_max_p95": 128.88795852661133,
+            "clip_score_mean": 0.31360959800183774,
+            "clip_score_median": 0.31306858360767365,
+            "clip_score_p95": 0.3620356753468514
+          },
+          "fitted": {
+            "scheme": "fitted",
+            "model_id": "runwayml/stable-diffusion-v1-5",
+            "guidance_scale": 7.5,
+            "w": 6.5,
+            "num_steps": 20,
+            "num_prompts": 5000,
+            "pixel_saturation_mean": 0.005030401755012986,
+            "pixel_saturation_median": 0.0010439555044285953,
+            "pixel_saturation_p95": 0.023182551655918426,
+            "pixel_contrast_mean": 0.20973474320545793,
+            "pixel_contrast_median": 0.21192215383052826,
+            "pixel_contrast_p95": 0.2784722372889519,
+            "laplacian_energy_mean": 0.08553034106045962,
+            "laplacian_energy_median": 0.07909438014030457,
+            "laplacian_energy_p95": 0.15436737835407258,
+            "latent_norm_max_mean": 127.68354943847656,
+            "latent_norm_max_median": 127.6907844543457,
+            "latent_norm_max_p95": 128.84020233154297,
+            "clip_score_mean": 0.3096439703077078,
+            "clip_score_median": 0.3089306503534317,
+            "clip_score_p95": 0.3575085550546646
+          },
+          "interval": {
+            "scheme": "interval",
+            "model_id": "runwayml/stable-diffusion-v1-5",
+            "guidance_scale": 7.5,
+            "w": 6.5,
+            "num_steps": 20,
+            "num_prompts": 5000,
+            "pixel_saturation_mean": 0.0010514536831407895,
+            "pixel_saturation_median": 0.00014750163245480508,
+            "pixel_saturation_p95": 0.005042521469295028,
+            "pixel_contrast_mean": 0.18231061078831554,
+            "pixel_contrast_median": 0.1829552724957466,
+            "pixel_contrast_p95": 0.24402892440557483,
+            "laplacian_energy_mean": 0.10007765994593501,
+            "laplacian_energy_median": 0.09381403774023056,
+            "laplacian_energy_p95": 0.17054678797721864,
+            "latent_norm_max_mean": 127.69010811157227,
+            "latent_norm_max_median": 127.69718933105469,
+            "latent_norm_max_p95": 128.84067153930664,
+            "clip_score_mean": 0.2655354009717703,
+            "clip_score_median": 0.26728519797325134,
+            "clip_score_p95": 0.3222775459289551
+          }
+        },
+        "bootstrap": {
+          "fitted": {
+            "scheme": "fitted",
+            "bootstrap_repetitions": 1000,
+            "sat_p95_ratio_lo": 0.3373184905557922,
+            "sat_p95_ratio_med": 0.35786697277757096,
+            "sat_p95_ratio_hi": 0.3801226852516577,
+            "clip_mean_delta_lo": -0.004476552420035004,
+            "clip_mean_delta_med": -0.003961356122791767,
+            "clip_mean_delta_hi": -0.0034396487358212473,
+            "stabilization_supported": true,
+            "clip_noninferior": true
+          },
+          "interval": {
+            "scheme": "interval",
+            "bootstrap_repetitions": 1000,
+            "sat_p95_ratio_lo": 0.06832198678197761,
+            "sat_p95_ratio_med": 0.07743678128196982,
+            "sat_p95_ratio_hi": 0.08642058492962199,
+            "clip_mean_delta_lo": -0.04913857357092202,
+            "clip_mean_delta_med": -0.04805228620618582,
+            "clip_mean_delta_hi": -0.046940841697975993,
+            "stabilization_supported": true,
+            "clip_noninferior": false
+          }
+        },
+        "shutdownContrast": {
+          "scheme": "fitted",
+          "reference": "interval",
+          "bootstrap_repetitions": 1000,
+          "sat_p95_ratio_lo": 4.155201840105709,
+          "sat_p95_ratio_med": 4.637902258619891,
+          "sat_p95_ratio_hi": 5.220449078769722,
+          "clip_mean_delta_lo": 0.04306890269100666,
+          "clip_mean_delta_med": 0.0441166408225894,
+          "clip_mean_delta_hi": 0.04513900549404323
+        }
+      }
+    ]
+  },
+  "scope": [
+    "Fitted CFG is presented as a high-guidance stabilizer, not a universal quality improvement.",
+    "KID can favor vanilla CFG on CIFAR-10 even when FID and clipping favor fitted CFG.",
+    "Stable Diffusion evidence covers two deterministic DDIM cells, not every model or scheduler."
+  ]
+}
