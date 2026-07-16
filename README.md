@@ -9,9 +9,9 @@ fixed.
 
 ## Product Surface
 
-- **Lab:** a native-1024 SDXL matched triplet, matched SD1.5 CFG / fitted /
+- **Lab:** a representative SD1.5 stress cell with matched CFG / fitted /
   interval outputs, exact step playback, coefficient traces, and a
-  clipped-pixel X-ray.
+  clipped-pixel X-ray, followed by a scoped native-1024 SDXL transfer demo.
 - **Atlas:** a clickable `w x N` CIFAR-10 EDM grid backed by 5k-image cells,
   plus two 5k Stable Diffusion transfer summaries.
 - **Build:** the sampler diff, artifact contract, GPU architecture, source
@@ -39,11 +39,14 @@ npm run test:e2e
 
 ## Data Provenance
 
-The top visual is a native `1024 x 1024` Stable Diffusion XL transfer demo at
-`guidance_scale=12`, `N=20`, and seed `260715`. It is a fixed visual showcase,
-not a benchmark endpoint. The exact replay uses Stable Diffusion 1.5 with
-deterministic DDIM at `guidance_scale=12`, `N=12`, prompt index `36`, and seed
-`20300036`. All matched schemes share their initial latent and network calls.
+The top visual and exact replay use Stable Diffusion 1.5 with deterministic
+DDIM at `guidance_scale=12`, `N=12`, prompt index `36`, and seed `20300036`.
+The representative cell was selected from a fixed 64-prompt block by the
+recorded CFG-minus-fitted near-clipping gap, then checked for visual legibility.
+A native `1024 x 1024` Stable Diffusion XL transfer demo at
+`guidance_scale=12`, `N=20`, and seed `260715` appears later as a fixed visual
+showcase, not a benchmark endpoint. All matched schemes share their initial
+latent and network calls.
 
 - Fixed final outputs come from the 1k matched-seed run in the sibling
   `guided-cfg-ap` research repository.
@@ -57,7 +60,8 @@ deterministic DDIM at `guidance_scale=12`, `N=12`, prompt index `36`, and seed
   `public/demo/evidence.json` from the research result CSV/JSON files.
 
 The representative first prompt was selected from the first 64 matched samples
-after ranking by CFG-minus-fitted saturation, then checking visual legibility.
+after ranking by the CFG-minus-fitted near-clipping fraction, then checking
+visual legibility.
 The selection rule is recorded in the manifest rather than presented as an
 uncurated benchmark sample.
 

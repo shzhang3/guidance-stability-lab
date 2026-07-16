@@ -240,7 +240,7 @@ function ImagePanel({
       </div>
       <figcaption>
         <span>
-          <small>Saturation</small>
+          <small>Near-clipped RGB</small>
           <strong>{percent(saturation, 2)}</strong>
         </span>
         <span>
@@ -308,11 +308,11 @@ function CoefficientChart({ trace, step }: { trace: TraceManifest; step: number 
 function NativeHero({ manifest }: { manifest: SdxlManifest }) {
   const [selected, setSelected] = useState<Scheme>('fitted')
   return (
-    <section className="native-hero" aria-labelledby="native-hero-title">
+    <section className="native-hero native-transfer" aria-labelledby="native-hero-title">
       <div className="native-hero-heading">
         <div>
-          <span className="eyebrow">Native {manifest.width} · Stable Diffusion XL</span>
-          <h1 id="native-hero-title">{manifest.prompt}</h1>
+          <span className="eyebrow">Native-resolution transfer · Stable Diffusion XL</span>
+          <h2 id="native-hero-title">{manifest.prompt}</h2>
         </div>
         <div className="native-hero-facts" aria-label="SDXL run configuration">
           <span><small>Guidance</small><strong>{manifest.guidanceScale}</strong></span>
@@ -344,7 +344,7 @@ function NativeHero({ manifest }: { manifest: SdxlManifest }) {
               </div>
               <figcaption>
                 <span><small>Native pixels</small><strong>{manifest.width}²</strong></span>
-                <span><small>Saturation</small><strong>{percent(entry.saturation, 2)}</strong></span>
+                <span><small>Near-clipped RGB</small><strong>{percent(entry.saturation, 2)}</strong></span>
               </figcaption>
             </figure>
           )
@@ -374,6 +374,7 @@ function LabView({
   const [renderMode, setRenderMode] = useState<RenderMode>('retina')
   const sample = finalManifest.samples.find((entry) => entry.promptIndex === selectedIndex) ?? finalManifest.samples[0]
   const traceActive = Boolean(trace && sample.seed === trace.seed)
+  const isPrimaryStressCell = sample.promptIndex === finalManifest.samples[0].promptIndex
   const maxStep = trace?.numSteps ?? finalManifest.source.numSteps
 
   useEffect(() => {
@@ -424,82 +425,91 @@ function LabView({
 
   return (
     <div className="view lab-view">
-      {sdxl && <NativeHero manifest={sdxl} />}
-
-      <section className="lab-toolbar" aria-label="Demo controls">
-        <label className="field prompt-field">
-          <span>Matched prompt</span>
-          <select
-            value={selectedIndex}
-            onChange={(event) => setSelectedIndex(Number(event.target.value))}
-          >
-            {finalManifest.samples.map((entry) => (
-              <option key={entry.promptIndex} value={entry.promptIndex}>{entry.prompt}</option>
-            ))}
-          </select>
-        </label>
-        <div className="run-facts" aria-label="Run configuration">
-          <span><small>Guidance</small><strong>{finalManifest.source.guidanceScale}</strong></span>
-          <span><small>NFE</small><strong>{finalManifest.source.numSteps}</strong></span>
-          <span><small>Seed</small><strong>{sample.seed}</strong></span>
+      <section className="stress-hero" aria-labelledby="stress-hero-title">
+        <div className="stress-hero-heading">
+          <div className="prompt-line">
+            <span className="eyebrow">
+              {isPrimaryStressCell ? 'Representative stress cell' : 'Matched output'} · Stable Diffusion 1.5
+            </span>
+            <h1 id="stress-hero-title">{sample.prompt}</h1>
+            <p>Same prompt, seed, network, schedule, and NFE. Only the guidance coefficient changes.</p>
+          </div>
+          <div className="run-facts" aria-label="Run configuration">
+            <span><small>Guidance</small><strong>{finalManifest.source.guidanceScale}</strong></span>
+            <span><small>NFE</small><strong>{finalManifest.source.numSteps}</strong></span>
+            <span><small>Seed</small><strong>{sample.seed}</strong></span>
+          </div>
         </div>
-        <div className="resolution-switch segmented" aria-label="Image resolution">
-          <button
-            type="button"
-            aria-pressed={renderMode === 'retina'}
-            title="Deterministic 2x display derivative"
-            onClick={() => setRenderMode('retina')}
-          >
-            Retina
+
+        <section className="lab-toolbar" aria-label="Demo controls">
+          <label className="field prompt-field">
+            <span>Matched prompt</span>
+            <select
+              value={selectedIndex}
+              onChange={(event) => setSelectedIndex(Number(event.target.value))}
+            >
+              {finalManifest.samples.map((entry) => (
+                <option key={entry.promptIndex} value={entry.promptIndex}>{entry.prompt}</option>
+              ))}
+            </select>
+          </label>
+          <div className="resolution-switch segmented" aria-label="Image resolution">
+            <button
+              type="button"
+              aria-pressed={renderMode === 'retina'}
+              title="Deterministic 2x display derivative"
+              onClick={() => setRenderMode('retina')}
+            >
+              Retina
+            </button>
+            <button
+              type="button"
+              aria-pressed={renderMode === 'raw'}
+              title="Exact 512 experiment output"
+              onClick={() => setRenderMode('raw')}
+            >
+              Raw 512
+            </button>
+          </div>
+          <button className={`tool-button ${xray ? 'is-active' : ''}`} type="button" aria-pressed={xray} onClick={() => setXray(!xray)}>
+            {xray ? <Eye size={18} /> : <ScanLine size={18} />}
+            X-ray
           </button>
-          <button
-            type="button"
-            aria-pressed={renderMode === 'raw'}
-            title="Exact 512 experiment output"
-            onClick={() => setRenderMode('raw')}
-          >
-            Raw 512
-          </button>
+        </section>
+
+        <div className="mobile-scheme-switch segmented" aria-label="Visible method">
+          {(Object.keys(schemeMeta) as Scheme[]).map((scheme) => (
+            <button key={scheme} type="button" aria-pressed={mobileScheme === scheme} onClick={() => setMobileScheme(scheme)}>
+              <MethodMark scheme={scheme} />{schemeMeta[scheme].short}
+            </button>
+          ))}
         </div>
-        <button className={`tool-button ${xray ? 'is-active' : ''}`} type="button" aria-pressed={xray} onClick={() => setXray(!xray)}>
-          {xray ? <Eye size={18} /> : <ScanLine size={18} />}
-          X-ray
-        </button>
-      </section>
 
-      <div className="prompt-line">
-        <span className="eyebrow">Stable Diffusion 1.5 · deterministic DDIM</span>
-        <h1>{sample.prompt}</h1>
-        <p>Same prompt, seed, and network evaluations. Only the guidance coefficient changes.</p>
-      </div>
-
-      <div className="mobile-scheme-switch segmented" aria-label="Visible method">
-        {(Object.keys(schemeMeta) as Scheme[]).map((scheme) => (
-          <button key={scheme} type="button" aria-pressed={mobileScheme === scheme} onClick={() => setMobileScheme(scheme)}>
-            <MethodMark scheme={scheme} />{schemeMeta[scheme].short}
-          </button>
-        ))}
-      </div>
-
-      <section className="comparison-grid" aria-label="Matched method comparison">
-        {(Object.keys(schemeMeta) as Scheme[]).map((scheme) => {
-          const frame = frameFor(scheme)
-          return (
-            <ImagePanel
-              key={`${sample.promptIndex}-${scheme}-${step}`}
-              scheme={scheme}
-              image={frame.image}
-              mask={frame.mask}
-              xray={xray}
-              saturation={frame.saturation}
-              clipScore={frame.clipScore}
-              coefficient={frame.coefficient ?? null}
-              selected={mobileScheme === scheme}
-              retina={retina}
-              renderMode={renderMode}
-            />
-          )
-        })}
+        <section className="comparison-grid" aria-label="Matched method comparison">
+          {(Object.keys(schemeMeta) as Scheme[]).map((scheme) => {
+            const frame = frameFor(scheme)
+            return (
+              <ImagePanel
+                key={`${sample.promptIndex}-${scheme}-${step}`}
+                scheme={scheme}
+                image={frame.image}
+                mask={frame.mask}
+                xray={xray}
+                saturation={frame.saturation}
+                clipScore={frame.clipScore}
+                coefficient={frame.coefficient ?? null}
+                selected={mobileScheme === scheme}
+                retina={retina}
+                renderMode={renderMode}
+              />
+            )
+          })}
+        </section>
+        <p className="stress-hero-scope">
+          {isPrimaryStressCell
+            ? 'Selected from a fixed 64-prompt block by the recorded CFG-minus-fitted near-clipping gap, then checked for visual legibility.'
+            : 'Fixed matched output from the same audited prompt block.'}
+        </p>
       </section>
 
       <section className={`trace-console ${traceActive ? '' : 'is-inactive'}`}>
@@ -556,6 +566,8 @@ function LabView({
       <p className="display-provenance">
         Retina mode uses the same deterministic 2x display transform for every method. Raw 512 remains the experiment source.
       </p>
+
+      {sdxl && <NativeHero manifest={sdxl} />}
 
       <section className="example-strip" aria-labelledby="examples-heading">
         <div className="section-heading">

@@ -48,6 +48,10 @@ test('lab exposes the exact trace and clipping overlay', async ({ page }, testIn
   await slider.focus()
   await slider.press('End')
   await expect(page.getByText('Step 12/12')).toBeVisible()
+  if (isMobile) {
+    await page.locator('.mobile-scheme-switch').getByRole('button', { name: 'Fitted' }).click()
+    await expect(page.locator('.comparison-panel[data-scheme="fitted"]')).toBeVisible()
+  }
   await page.evaluate(() => window.scrollTo(0, 0))
 
   await expect(page).toHaveScreenshot('lab.png', { fullPage: true })
