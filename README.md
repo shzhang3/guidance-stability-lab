@@ -9,8 +9,9 @@ fixed.
 
 ## Product Surface
 
-- **Lab:** matched CFG / fitted / interval outputs, exact SD1.5 step playback,
-  coefficient traces, and a clipped-pixel X-ray.
+- **Lab:** a native-1024 SDXL matched triplet, matched SD1.5 CFG / fitted /
+  interval outputs, exact step playback, coefficient traces, and a
+  clipped-pixel X-ray.
 - **Atlas:** a clickable `w x N` CIFAR-10 EDM grid backed by 5k-image cells,
   plus two 5k Stable Diffusion transfer summaries.
 - **Build:** the sampler diff, artifact contract, GPU architecture, source
@@ -38,15 +39,20 @@ npm run test:e2e
 
 ## Data Provenance
 
-The main visual uses Stable Diffusion 1.5 with deterministic DDIM at
-`guidance_scale=12`, `N=12`, prompt index `36`, and seed `20300036`. The three
-schemes share the same initial latent and network calls.
+The top visual is a native `1024 x 1024` Stable Diffusion XL transfer demo at
+`guidance_scale=12`, `N=20`, and seed `260715`. It is a fixed visual showcase,
+not a benchmark endpoint. The exact replay uses Stable Diffusion 1.5 with
+deterministic DDIM at `guidance_scale=12`, `N=12`, prompt index `36`, and seed
+`20300036`. All matched schemes share their initial latent and network calls.
 
 - Fixed final outputs come from the 1k matched-seed run in the sibling
   `guided-cfg-ap` research repository.
 - The timeline is an exact rerun that decodes every DDIM step.
 - Every exported final image has a SHA256 entry in
   `public/demo/final/manifest.json`.
+- The raw SD1.5 images remain `512 x 512`. Retina mode uses a deterministic
+  common 2x display transform recorded in `public/demo/retina/manifest.json`;
+  Raw 512 mode bypasses it.
 - The CIFAR and latent-diffusion tables are exported to
   `public/demo/evidence.json` from the research result CSV/JSON files.
 
@@ -62,6 +68,7 @@ Export the compact fixed-image and evidence bundles from local research data:
 ```bash
 python3 scripts/export_demo_assets.py
 python3 scripts/export_evidence.py
+python3 scripts/generate_retina_assets.py --clean
 ```
 
 Generate the exact per-step trace on Hyak:
@@ -83,13 +90,28 @@ rsync -az \
   public/demo/trace/
 ```
 
+Generate the fixed native-1024 SDXL triplet:
+
+```bash
+rsync -az scripts/generate_sdxl_hero.py \
+  hyak-klone:/gscratch/amath/shzhang3/guidance-stability-lab/scripts/
+rsync -az slurm/generate_sdxl_hero.sbatch \
+  hyak-klone:/gscratch/amath/shzhang3/guidance-stability-lab/slurm/
+ssh hyak-klone \
+  'cd /gscratch/amath/shzhang3/guidance-stability-lab && \
+   sbatch slurm/generate_sdxl_hero.sbatch'
+rsync -az \
+  hyak-klone:/gscratch/amath/shzhang3/guidance-stability-lab/results/sdxl-hero/ \
+  public/demo/sdxl/
+```
+
 ## Architecture
 
 ```text
 React + TypeScript UI
         |
         v
-WebP frames + JSON manifests
+Raw WebP + display WebP + JSON manifests
         |
         v
 PyTorch / Diffusers DDIM worker on Hyak
@@ -104,4 +126,5 @@ the portfolio experience and must not silently modify the paper.
 Fitted CFG is presented here as a high-guidance stabilizer, not as a universal
 image-quality improvement. CIFAR KID can favor vanilla CFG, interval guidance
 can win FID in some higher-step cells, and Stable Diffusion evidence currently
-covers two deterministic DDIM settings.
+covers two deterministic DDIM settings. The SDXL triplet demonstrates native
+resolution transfer only; it does not extend the paper's quantitative claim.

@@ -26,6 +26,7 @@ import './App.css'
 
 type Scheme = 'cfg' | 'fitted' | 'interval'
 type ViewName = 'lab' | 'atlas' | 'build'
+type RenderMode = 'retina' | 'raw'
 
 interface SchemeSample {
   image: string
@@ -84,6 +85,47 @@ interface TraceManifest {
   schemes: Record<Scheme, TraceStep[]>
 }
 
+interface RetinaAsset {
+  display: string
+  sourceWidth: number
+  sourceHeight: number
+  displayWidth: number
+  displayHeight: number
+  sourceSha256: string
+  displaySha256: string
+}
+
+interface RetinaManifest {
+  scope: string
+  processor: { scale: number; resample: string; sharpen: string; format: string; quality: number }
+  assets: Record<string, RetinaAsset>
+}
+
+interface SdxlScheme {
+  image: string
+  mask: string
+  sha256: string
+  saturation: number
+  coefficientMin: number
+  coefficientFinal: number
+  latentNormMax: number
+}
+
+interface SdxlManifest {
+  scope: string
+  selection: string
+  model: string
+  scheduler: string
+  prompt: string
+  seed: number
+  guidanceScale: number
+  w: number
+  numSteps: number
+  height: number
+  width: number
+  schemes: Record<Scheme, SdxlScheme>
+}
+
 interface EvidenceScheme {
   fid: number
   kid: number
@@ -122,6 +164,9 @@ const schemeMeta: Record<Scheme, { label: string; short: string; detail: string 
 
 const base = import.meta.env.BASE_URL
 const assetUrl = (path: string) => `${base}${path.replace(/^\//, '')}`
+const renderedAsset = (path: string, retina: RetinaManifest, mode: RenderMode) => (
+  mode === 'retina' ? retina.assets[path]?.display ?? path : path
+)
 const format = (value: number, digits = 3) => value.toFixed(digits)
 const percent = (value: number, digits = 1) => `${(value * 100).toFixed(digits)}%`
 
@@ -157,6 +202,8 @@ function ImagePanel({
   clipScore,
   coefficient,
   selected,
+  retina,
+  renderMode,
 }: {
   scheme: Scheme
   image: string
@@ -166,12 +213,20 @@ function ImagePanel({
   clipScore: number | null
   coefficient: number | null
   selected: boolean
+  retina: RetinaManifest
+  renderMode: RenderMode
 }) {
   const meta = schemeMeta[scheme]
+  const renderedImage = renderedAsset(image, retina, renderMode)
   return (
     <figure className={`comparison-panel ${selected ? 'is-mobile-selected' : ''}`} data-scheme={scheme}>
       <div className="image-stage">
-        <img src={assetUrl(image)} alt={`${meta.label} output`} draggable={false} />
+        <img
+          src={assetUrl(renderedImage)}
+          alt={`${meta.label} output`}
+          data-render-mode={renderMode}
+          draggable={false}
+        />
         {xray && <img className="mask-layer" src={assetUrl(mask)} alt="Clipped-pixel overlay" draggable={false} />}
         <div className="method-label">
           <MethodMark scheme={scheme} />
@@ -250,12 +305,73 @@ function CoefficientChart({ trace, step }: { trace: TraceManifest; step: number 
   )
 }
 
-function LabView({ finalManifest, trace }: { finalManifest: FinalManifest; trace: TraceManifest | null }) {
+function NativeHero({ manifest }: { manifest: SdxlManifest }) {
+  const [selected, setSelected] = useState<Scheme>('fitted')
+  return (
+    <section className="native-hero" aria-labelledby="native-hero-title">
+      <div className="native-hero-heading">
+        <div>
+          <span className="eyebrow">Native {manifest.width} · Stable Diffusion XL</span>
+          <h1 id="native-hero-title">{manifest.prompt}</h1>
+        </div>
+        <div className="native-hero-facts" aria-label="SDXL run configuration">
+          <span><small>Guidance</small><strong>{manifest.guidanceScale}</strong></span>
+          <span><small>NFE</small><strong>{manifest.numSteps}</strong></span>
+          <span><small>Seed</small><strong>{manifest.seed}</strong></span>
+        </div>
+      </div>
+
+      <div className="native-hero-switch segmented" aria-label="Visible SDXL method">
+        {(Object.keys(schemeMeta) as Scheme[]).map((scheme) => (
+          <button key={scheme} type="button" aria-pressed={selected === scheme} onClick={() => setSelected(scheme)}>
+            <MethodMark scheme={scheme} />{schemeMeta[scheme].short}
+          </button>
+        ))}
+      </div>
+
+      <div className="native-hero-grid">
+        {(Object.keys(schemeMeta) as Scheme[]).map((scheme) => {
+          const entry = manifest.schemes[scheme]
+          return (
+            <figure
+              key={scheme}
+              className={`native-output ${selected === scheme ? 'is-selected' : ''}`}
+              data-scheme={scheme}
+            >
+              <div className="native-image-stage">
+                <img src={assetUrl(entry.image)} alt={`${schemeMeta[scheme].label} SDXL output`} draggable={false} />
+                <div className="method-label"><MethodMark scheme={scheme} />{schemeMeta[scheme].label}</div>
+              </div>
+              <figcaption>
+                <span><small>Native pixels</small><strong>{manifest.width}²</strong></span>
+                <span><small>Saturation</small><strong>{percent(entry.saturation, 2)}</strong></span>
+              </figcaption>
+            </figure>
+          )
+        })}
+      </div>
+      <p className="native-hero-scope">{manifest.scope} Same prompt, seed, network, schedule, and NFE.</p>
+    </section>
+  )
+}
+
+function LabView({
+  finalManifest,
+  trace,
+  retina,
+  sdxl,
+}: {
+  finalManifest: FinalManifest
+  trace: TraceManifest | null
+  retina: RetinaManifest
+  sdxl: SdxlManifest | null
+}) {
   const [selectedIndex, setSelectedIndex] = useState(finalManifest.samples[0].promptIndex)
   const [step, setStep] = useState(trace?.numSteps ?? finalManifest.source.numSteps)
   const [playing, setPlaying] = useState(false)
   const [xray, setXray] = useState(false)
   const [mobileScheme, setMobileScheme] = useState<Scheme>('fitted')
+  const [renderMode, setRenderMode] = useState<RenderMode>('retina')
   const sample = finalManifest.samples.find((entry) => entry.promptIndex === selectedIndex) ?? finalManifest.samples[0]
   const traceActive = Boolean(trace && sample.seed === trace.seed)
   const maxStep = trace?.numSteps ?? finalManifest.source.numSteps
@@ -308,6 +424,8 @@ function LabView({ finalManifest, trace }: { finalManifest: FinalManifest; trace
 
   return (
     <div className="view lab-view">
+      {sdxl && <NativeHero manifest={sdxl} />}
+
       <section className="lab-toolbar" aria-label="Demo controls">
         <label className="field prompt-field">
           <span>Matched prompt</span>
@@ -324,6 +442,24 @@ function LabView({ finalManifest, trace }: { finalManifest: FinalManifest; trace
           <span><small>Guidance</small><strong>{finalManifest.source.guidanceScale}</strong></span>
           <span><small>NFE</small><strong>{finalManifest.source.numSteps}</strong></span>
           <span><small>Seed</small><strong>{sample.seed}</strong></span>
+        </div>
+        <div className="resolution-switch segmented" aria-label="Image resolution">
+          <button
+            type="button"
+            aria-pressed={renderMode === 'retina'}
+            title="Deterministic 2x display derivative"
+            onClick={() => setRenderMode('retina')}
+          >
+            Retina
+          </button>
+          <button
+            type="button"
+            aria-pressed={renderMode === 'raw'}
+            title="Exact 512 experiment output"
+            onClick={() => setRenderMode('raw')}
+          >
+            Raw 512
+          </button>
         </div>
         <button className={`tool-button ${xray ? 'is-active' : ''}`} type="button" aria-pressed={xray} onClick={() => setXray(!xray)}>
           {xray ? <Eye size={18} /> : <ScanLine size={18} />}
@@ -359,6 +495,8 @@ function LabView({ finalManifest, trace }: { finalManifest: FinalManifest; trace
               clipScore={frame.clipScore}
               coefficient={frame.coefficient ?? null}
               selected={mobileScheme === scheme}
+              retina={retina}
+              renderMode={renderMode}
             />
           )
         })}
@@ -414,6 +552,10 @@ function LabView({ finalManifest, trace }: { finalManifest: FinalManifest; trace
         </div>
         <code><span className="removed">w(r - 1)</span><ArrowRight size={20} /><span className="added">r^(1+w) - r</span></code>
       </section>
+
+      <p className="display-provenance">
+        Retina mode uses the same deterministic 2x display transform for every method. Raw 512 remains the experiment source.
+      </p>
 
       <section className="example-strip" aria-labelledby="examples-heading">
         <div className="section-heading">
@@ -570,7 +712,15 @@ function AtlasView({ evidence }: { evidence: EvidenceManifest }) {
   )
 }
 
-function BuildView({ finalManifest, evidence }: { finalManifest: FinalManifest; evidence: EvidenceManifest }) {
+function BuildView({
+  finalManifest,
+  evidence,
+  retina,
+}: {
+  finalManifest: FinalManifest
+  evidence: EvidenceManifest
+  retina: RetinaManifest
+}) {
   return (
     <div className="view build-view">
       <section className="page-intro">
@@ -610,6 +760,7 @@ function BuildView({ finalManifest, evidence }: { finalManifest: FinalManifest; 
             'Coefficient identities and one-jump self-test',
             'Matched prompt, seed, network, and NFE',
             'SHA256 for every public final image',
+            'Display derivatives separated from raw evidence',
             'Responsive desktop and mobile visual checks',
             'Static fallback independent of GPU availability',
           ].map((item) => <span key={item}><Check size={16} />{item}</span>)}
@@ -626,6 +777,7 @@ function BuildView({ finalManifest, evidence }: { finalManifest: FinalManifest; 
           <div><dt>Scheduler</dt><dd>{finalManifest.source.scheduler}</dd></div>
           <div><dt>Cell</dt><dd>g={finalManifest.source.guidanceScale}, N={finalManifest.source.numSteps}</dd></div>
           <div><dt>Evidence</dt><dd>{evidence.cifar.samplesPerCell.toLocaleString()} images × 9 CIFAR cells</dd></div>
+          <div><dt>Display layer</dt><dd>{Object.keys(retina.assets).length} assets · {retina.processor.scale}× deterministic</dd></div>
           <div className="hash"><dt>Source snapshot</dt><dd>{finalManifest.source.sourceTreeSha256}</dd></div>
         </dl>
       </section>
@@ -642,8 +794,10 @@ function App() {
   const [view, setView] = useState<ViewName>('lab')
   const final = useJson<FinalManifest>('/demo/final/manifest.json')
   const trace = useJson<TraceManifest>('/demo/trace/manifest.json')
+  const retina = useJson<RetinaManifest>('/demo/retina/manifest.json')
+  const sdxl = useJson<SdxlManifest>('/demo/sdxl/manifest.json')
   const evidence = useJson<EvidenceManifest>('/demo/evidence.json')
-  const ready = final.data && evidence.data
+  const ready = final.data && retina.data && evidence.data
 
   return (
     <div className="app-shell">
@@ -665,12 +819,14 @@ function App() {
           <div className="loading-state">
             <Gauge size={28} />
             <strong>Loading experiment bundle</strong>
-            <span>{final.error || evidence.error || 'Reading image and metric manifests…'}</span>
+            <span>{final.error || retina.error || evidence.error || 'Reading image and metric manifests…'}</span>
           </div>
         )}
-        {ready && view === 'lab' && <LabView finalManifest={final.data!} trace={trace.data} />}
+        {ready && view === 'lab' && (
+          <LabView finalManifest={final.data!} trace={trace.data} retina={retina.data!} sdxl={sdxl.data} />
+        )}
         {ready && view === 'atlas' && <AtlasView evidence={evidence.data!} />}
-        {ready && view === 'build' && <BuildView finalManifest={final.data!} evidence={evidence.data!} />}
+        {ready && view === 'build' && <BuildView finalManifest={final.data!} evidence={evidence.data!} retina={retina.data!} />}
       </main>
 
       <footer>

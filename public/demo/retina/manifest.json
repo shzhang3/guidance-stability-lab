@@ -1,0 +1,563 @@
+{
+  "formatVersion": 1,
+  "scope": "Display-only derivatives. Raw 512 experiment assets remain the evidence source.",
+  "processor": {
+    "scale": 2,
+    "resample": "Pillow LANCZOS",
+    "sharpen": "UnsharpMask(radius=1.0, percent=40, threshold=3)",
+    "format": "WebP",
+    "quality": 95,
+    "method": 6
+  },
+  "assets": {
+    "/demo/final/p0003-cfg.webp": {
+      "display": "/demo/retina/final/p0003-cfg.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "339cbf5fc94fbc58953a5751291e5151a70a7ce4befb2fe8d1b3615005d9fa66",
+      "displaySha256": "de284fb294b63706fdcc353bc9c6cbf2f438683b1e69add8ceb9e6ca10f9953f"
+    },
+    "/demo/final/p0003-fitted.webp": {
+      "display": "/demo/retina/final/p0003-fitted.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "c420f73c520200a0e0802c567a27505737c18f3ff8a0a17e1898c4649c895898",
+      "displaySha256": "206318d8d6d04223ad503e2031ca8c8efb1c5e3933a729478d01921b267be0df"
+    },
+    "/demo/final/p0003-interval.webp": {
+      "display": "/demo/retina/final/p0003-interval.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "c9ffc1522479367effe6738d43eac8809700abe90752196d0f14eba021dc6575",
+      "displaySha256": "bdc0ac58d04695c27d6624eff001072eb5e55a8460abc36a4e42ef5b53480ce4"
+    },
+    "/demo/final/p0012-cfg.webp": {
+      "display": "/demo/retina/final/p0012-cfg.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "6c9e7175f0ed9cf10fd8682bc3f92a9a21a0b0b704261216f5c9943a7d67ca76",
+      "displaySha256": "42b939cac3a315245c81d0e1b771d98b64bb3b85675efca0ab04bbe1bc382e6d"
+    },
+    "/demo/final/p0012-fitted.webp": {
+      "display": "/demo/retina/final/p0012-fitted.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "b24a8db181fc943fc02737291695e0dd1b78fea24abd9dff218319c9470a814b",
+      "displaySha256": "5ee15fb3a71549f93b4ec0c94fedaa3a9579bf4d1d31fd3f057536ea0611ff36"
+    },
+    "/demo/final/p0012-interval.webp": {
+      "display": "/demo/retina/final/p0012-interval.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "71ed1d3141154e3fdaca07d42469b29eafca298822ea4016011e0a4b3603d509",
+      "displaySha256": "83409e1e7d4badc5a535ac849a605d480691d2b6a7aac3c19946309ff5965114"
+    },
+    "/demo/final/p0015-cfg.webp": {
+      "display": "/demo/retina/final/p0015-cfg.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "a9a714fa175fd42b75e549200345e7829f2417b3a15d3b2977d02aafda30d6ae",
+      "displaySha256": "2d5350732bbf0fc851d46798d49c7069ef6f084ee82e100dfb6c682b757a4fa1"
+    },
+    "/demo/final/p0015-fitted.webp": {
+      "display": "/demo/retina/final/p0015-fitted.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "c5f444e48b90f0f4173cb5a5d0253286943eeb97863611580da5e92ee4159a07",
+      "displaySha256": "bc17c6037359a63a59e56384df9ca12a4501f67994afdfc3d6f8d90a68590958"
+    },
+    "/demo/final/p0015-interval.webp": {
+      "display": "/demo/retina/final/p0015-interval.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "0c411a9519f664d8f5f85b668080a66a24e40a76a79237f8d2b7790fbf377af6",
+      "displaySha256": "96ee7d3c8095c0439464c0d0ca60b9675d1e4f86035133a5f4a2c011749e9041"
+    },
+    "/demo/final/p0020-cfg.webp": {
+      "display": "/demo/retina/final/p0020-cfg.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "7a9d4878e83fe0b99b2cb051db08b4f198b61f995e8456caae09e1fe85ae3cc2",
+      "displaySha256": "01b662e13c3e1abd0bb15b94058b8b61d4354151f11c847fe8cc63df7a734b81"
+    },
+    "/demo/final/p0020-fitted.webp": {
+      "display": "/demo/retina/final/p0020-fitted.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "af562fdf107c9a2e6a5ac2b946aa94d7e80a12182eb723c4f41a326ac59d16e8",
+      "displaySha256": "c21c45080debfb2e6cbbda923caefd9894712cc2508baeec0e7b7aca6478b8d6"
+    },
+    "/demo/final/p0020-interval.webp": {
+      "display": "/demo/retina/final/p0020-interval.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "8617fe0ed166bde39fa0b0c6d6f3f67588a5f78f9abd5d79a17795e032b76f65",
+      "displaySha256": "eb841dc7172915173869fcf8e900c60fa97cd994801b059977bd515a8c1d49a0"
+    },
+    "/demo/final/p0023-cfg.webp": {
+      "display": "/demo/retina/final/p0023-cfg.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "9f730557c7d183ce5e2cef5bc1f4646bb5477a20dda6294c6f43b13eff49e7d9",
+      "displaySha256": "1545397455275a74cce55338897ea0c6f57566c5d57faff472c047155aab8c8d"
+    },
+    "/demo/final/p0023-fitted.webp": {
+      "display": "/demo/retina/final/p0023-fitted.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "a321ece725e009cfa3e6c860c1cf98e5a5a6c501e165088c8821b173a1904a4a",
+      "displaySha256": "c260507824e8a2d269cf4d3fd1931f42ea69413fe8eee4f92585ddfa0c1bfd7d"
+    },
+    "/demo/final/p0023-interval.webp": {
+      "display": "/demo/retina/final/p0023-interval.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "523078b2fca7d0283445fac0692f56b4f163a29a49bc58c1528e959b2481f0e8",
+      "displaySha256": "5af654158ff37a5957d9a0665682857fc4a7ab63671e07d85691332d39ce856c"
+    },
+    "/demo/final/p0036-cfg.webp": {
+      "display": "/demo/retina/final/p0036-cfg.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "dfddc43bec260a6d0934ae0e7f8b39bbf9cafeb07bc43cf9797b5192b44a3623",
+      "displaySha256": "5a03a3a13bd13710d1ac9f1adbd66b247185e1854bc797456856c0d851486cf0"
+    },
+    "/demo/final/p0036-fitted.webp": {
+      "display": "/demo/retina/final/p0036-fitted.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "f7ea0295b138f1c011d6b5099c130aceab94f3f069fb375d9f6d31d4dfa9118c",
+      "displaySha256": "a0e0d6d75cdf078bcb6f4ba3cde4af1961049a2d75c6ba07b0cf6d511948269e"
+    },
+    "/demo/final/p0036-interval.webp": {
+      "display": "/demo/retina/final/p0036-interval.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "3a201b225ef3ce90973a6b84cacc76ab2488873f7a06cb5cb5556eeeb8232174",
+      "displaySha256": "4454165b2d71dc3a94800ef35ee09a1751fa114273eb0e3033c2083b03cfaf64"
+    },
+    "/demo/final/p0037-cfg.webp": {
+      "display": "/demo/retina/final/p0037-cfg.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "6f1ce16c0c23cbc3b2a73fdf43d01d44e657a8209915d408d6555164b1e09538",
+      "displaySha256": "256b6e0a2400e589c22fae234747de417e0a802cb15940bf6130fbff7e5cf449"
+    },
+    "/demo/final/p0037-fitted.webp": {
+      "display": "/demo/retina/final/p0037-fitted.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "2fe7e0a3df5016ef7278566ba166d27fc7f8472ccf977954d83ee8bab772f9fb",
+      "displaySha256": "80a3e4ac295cd4e276cdf1ea6b151f4a295df60504f1e1188e4359043f8bba56"
+    },
+    "/demo/final/p0037-interval.webp": {
+      "display": "/demo/retina/final/p0037-interval.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "8fd7f663e392daaa587c913b10a5618643a331c9253ad60fcc97d6b0047497f5",
+      "displaySha256": "343087ba4d3e63156f6ebc70d7e7c5362e056a77ffde2226c0d5beeefa58da38"
+    },
+    "/demo/final/p0040-cfg.webp": {
+      "display": "/demo/retina/final/p0040-cfg.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "b4d420802f06661a6eb579c8f1fcc42b1479737428c45341cbe8b4cd0a11539d",
+      "displaySha256": "6d57a0acd9c777b923a0c0355fc6af4ab26b6943be6ef4589a0144ec37c353b7"
+    },
+    "/demo/final/p0040-fitted.webp": {
+      "display": "/demo/retina/final/p0040-fitted.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "85c37e59fb9b2d4cfdf33f4e9888f476a07de5cb3706e04075a78137c726152c",
+      "displaySha256": "0516f38a0d18e62e6e4cdb7341cd40d163641f6d47ecafc196776cfc56057c6b"
+    },
+    "/demo/final/p0040-interval.webp": {
+      "display": "/demo/retina/final/p0040-interval.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "fe89647abf11c9db9496a3f5648cf1fc9c971831649186ddcf473669a2bcd0b6",
+      "displaySha256": "f72dc28de928697b2ba760d2bf0bbb047d21c136ecbf7faa1e794780c3c1948e"
+    },
+    "/demo/trace/cfg/step-01.webp": {
+      "display": "/demo/retina/trace/cfg/step-01.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "4df0bb7dd24e200b5aaa9588e870a7c6e45dc11aa70ea80a39bdb84bb1cad260",
+      "displaySha256": "49e4fe6d31885663b0baf2ce9e3d1680917102d10ec8b696a2c28bd37036115f"
+    },
+    "/demo/trace/cfg/step-02.webp": {
+      "display": "/demo/retina/trace/cfg/step-02.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "4f2de6eb0a5a844365d5d56e432e3c4c4b0d88f2f8444a8121c93b253c9c1cd9",
+      "displaySha256": "2769ecd4350a645dd93eb6c67a7ad3def8caf17b0e349ed609c32efbed9eb4a6"
+    },
+    "/demo/trace/cfg/step-03.webp": {
+      "display": "/demo/retina/trace/cfg/step-03.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "22b6f976d94d05f023009e449ae06aa5dc5e0e2c76ff6863e18c3b31d6850bae",
+      "displaySha256": "ca62e3340bdeed478240c65b9a1c8cf3aaa2b28a60fc1bf1f121d65e7562ac76"
+    },
+    "/demo/trace/cfg/step-04.webp": {
+      "display": "/demo/retina/trace/cfg/step-04.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "11da92d0221d384e36342ae84ff6740c7c46cc92830da912dc3e54509de6b010",
+      "displaySha256": "c1162c6b55715d9a07a6dbcb891490bc2f3dfedcfc07b05b37b8546b88ff851d"
+    },
+    "/demo/trace/cfg/step-05.webp": {
+      "display": "/demo/retina/trace/cfg/step-05.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "8702882f675ea325af92bd1dd8ba99fb8bc8d306ed8bd9a0c2caff24bc73433f",
+      "displaySha256": "9eecbee1288f74c0ae4976cb6a9365c5a0d9345c11c6829f1cd3d16e81b5802e"
+    },
+    "/demo/trace/cfg/step-06.webp": {
+      "display": "/demo/retina/trace/cfg/step-06.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "53be1027fb571ae760b7983360e603aa2ab9e0a6a23c1cd3743c40b572a4970b",
+      "displaySha256": "e5955bc38488a085bc66f995710b29413329391fefeaee768db2e1cb5ea9db4f"
+    },
+    "/demo/trace/cfg/step-07.webp": {
+      "display": "/demo/retina/trace/cfg/step-07.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "79dc9ab68b3826227199c0921cf6aebc0a2e216654dc0bc93c6e06e3662c51ef",
+      "displaySha256": "b79236389123e8f8aa060b40a1f956c02cc751c9f1ed5253a945a86fa171c9ad"
+    },
+    "/demo/trace/cfg/step-08.webp": {
+      "display": "/demo/retina/trace/cfg/step-08.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "d5fe1197bb2b7ea03d592831e60ce0b0d22121fcfa20a68920ffb43ee1561b1f",
+      "displaySha256": "fbb8ac29c847ad7c087f606ec0e83f1584637e1b66f90dd1a336bb0ec02fee44"
+    },
+    "/demo/trace/cfg/step-09.webp": {
+      "display": "/demo/retina/trace/cfg/step-09.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "dfd26491784a1995b73dea464b85db48fb2457379d30b5a74f7a3dc83ebcff96",
+      "displaySha256": "0e5d7d0bc3dc71292eb475a5906f7153c4c5aa33311b3000b44d9813ad093184"
+    },
+    "/demo/trace/cfg/step-10.webp": {
+      "display": "/demo/retina/trace/cfg/step-10.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "5e4172e8051b9342be1b1d3ab4091b34905ffcc5675009734b3e83cc42a63945",
+      "displaySha256": "7bf3921acdd39448a8d11ec53bca0379eea13684050c2d555f5a0f13be6c93bb"
+    },
+    "/demo/trace/cfg/step-11.webp": {
+      "display": "/demo/retina/trace/cfg/step-11.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "68e2fd7a581ce74d938b7f60981d44c7e69373fbe5e6cb328443a8131ba8bf40",
+      "displaySha256": "f50dbd2bfaf640987cb471966db02606026cbb0540fd9e6cffe7f96b331bcf59"
+    },
+    "/demo/trace/cfg/step-12.webp": {
+      "display": "/demo/retina/trace/cfg/step-12.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "c423cdd11df0612f89289f9ab0287c317322c649a52fe3613bf7a85539122494",
+      "displaySha256": "f976e8c943b5a16ee5dd1c72bfc35b98827a43b0722459e1051d918aea346b97"
+    },
+    "/demo/trace/fitted/step-01.webp": {
+      "display": "/demo/retina/trace/fitted/step-01.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "bbd5b41c9d3c93f82f19b28009dc782e6fc1d9454f59549c4fa43fb95c463c43",
+      "displaySha256": "107f27de60b33ae5294c66e0e53b4086171a1a34e558c42875524a6909c67a20"
+    },
+    "/demo/trace/fitted/step-02.webp": {
+      "display": "/demo/retina/trace/fitted/step-02.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "66587f5268b6c386cd4e8835abf39e657e1deb3cdbc611dd4090a550070c2aa3",
+      "displaySha256": "581972305dda6c6693e0c4aa2ca525b47634db34d97f071d7f0222e059277b5d"
+    },
+    "/demo/trace/fitted/step-03.webp": {
+      "display": "/demo/retina/trace/fitted/step-03.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "2d636db21f827a83c17878a6ff674931dcb8119b305938a34dc0f4806dbe00c0",
+      "displaySha256": "cb5ec11dfed624ed7483d17c8b43240db5de91913a2d44db37e7f86e2b78b1a2"
+    },
+    "/demo/trace/fitted/step-04.webp": {
+      "display": "/demo/retina/trace/fitted/step-04.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "96d515f4791a51c2c7a0639a8468b7616eaace9c64f3740dd531400868132302",
+      "displaySha256": "c9545297e1150d317716f2dfdc3448223c1eea4e25822a2fb64e728765e6b130"
+    },
+    "/demo/trace/fitted/step-05.webp": {
+      "display": "/demo/retina/trace/fitted/step-05.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "4814eb73b99fe470a04fc900bbeb09e2712933625ba55b6550ce725d22b51d2b",
+      "displaySha256": "4787d389bf131a304f623b1f1fb364c19e5bce731581973f0421e6dc6cf08383"
+    },
+    "/demo/trace/fitted/step-06.webp": {
+      "display": "/demo/retina/trace/fitted/step-06.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "864ef1d02cc09277391a566e16852d1665263b14e03b8cf04e433820c85b35be",
+      "displaySha256": "a83e9814197233e0434159e745f8aef5914a9ed24c70a1f9aa608b1109fa66e2"
+    },
+    "/demo/trace/fitted/step-07.webp": {
+      "display": "/demo/retina/trace/fitted/step-07.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "3b9f5405e514fbc74ad56f2b0c7bf38c2d119c1cc2d9e18e92aee06cbd0da567",
+      "displaySha256": "924d5844ecca7138fa4a0e587994cd048f67573d862214302c2fac0a007dd829"
+    },
+    "/demo/trace/fitted/step-08.webp": {
+      "display": "/demo/retina/trace/fitted/step-08.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "e5b3434f0e12fef1805432bb6d3b13295564c91c5ea02b9d24f69a25fd2f9eab",
+      "displaySha256": "96223ac5e53c6ff368f238afc11e098d7d19d729c3c4c94456a5c5b1502b763a"
+    },
+    "/demo/trace/fitted/step-09.webp": {
+      "display": "/demo/retina/trace/fitted/step-09.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "6df38748437ae48132f2fa9c128f0681d338a497e7a27c09ba0d92101e52674c",
+      "displaySha256": "f07e29a83fb3928afbcf9176c60187102b9165ce2b4ad85e7302e3adb07a531f"
+    },
+    "/demo/trace/fitted/step-10.webp": {
+      "display": "/demo/retina/trace/fitted/step-10.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "3d7c0a1eeab1b3cfa1e8b41df77cf4b10f04fffd00dc60cb5a1d15d9dd7cb0bf",
+      "displaySha256": "706a516fe658ee0fd12bbf71f08e364aaab93de964d901d2764f6ae425046598"
+    },
+    "/demo/trace/fitted/step-11.webp": {
+      "display": "/demo/retina/trace/fitted/step-11.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "b59e18c61bee576bc6eedbda4404dc0f3c3f9c90d4a7667979410478696ec751",
+      "displaySha256": "2f54328d6ddb37ff274c9611bd4dce803071c4c4552bab90a2b56a206eeaf397"
+    },
+    "/demo/trace/fitted/step-12.webp": {
+      "display": "/demo/retina/trace/fitted/step-12.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "4ae5612497cb20d20b8496881edc6661fdfcbbd609e8e4527d0275b0e630607a",
+      "displaySha256": "afe73fbb320003502e38a3e040b9fb6ada66abf8ae4c76d1115d2d6305544d49"
+    },
+    "/demo/trace/interval/step-01.webp": {
+      "display": "/demo/retina/trace/interval/step-01.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "8f97da036a6c1aa23f60f0fe7322d4e823ac2e3518a169dc4e618b28e37b6e20",
+      "displaySha256": "f3fb3593c552adbaa7652801357e196e4e4bcaca945f8b009630d59761e087df"
+    },
+    "/demo/trace/interval/step-02.webp": {
+      "display": "/demo/retina/trace/interval/step-02.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "6479beaa881fe4a5f404958fb4917532b1fa849b816a3fb49bc3404a26685d54",
+      "displaySha256": "455cbcd95b5115dfdbe8933088e1f5ddb6e9f3f97bfb14f5ebb54dca4468a94f"
+    },
+    "/demo/trace/interval/step-03.webp": {
+      "display": "/demo/retina/trace/interval/step-03.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "936b9cb3bd9e7c30ebfb51b96cc4759f1b641c924f3cefe1b27977fa7953e389",
+      "displaySha256": "cd2e578ce2aab1b469efc77ebbd2d54996f2db4b6c2956a25e79755cbb5eb275"
+    },
+    "/demo/trace/interval/step-04.webp": {
+      "display": "/demo/retina/trace/interval/step-04.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "b4bfe0ec4b94dc8bc285cd344c3ef632e61362c913c4df61c94861560b3f934c",
+      "displaySha256": "56c76725a11f15c0dbace913cb352502290267a294204595106eac77d827eb11"
+    },
+    "/demo/trace/interval/step-05.webp": {
+      "display": "/demo/retina/trace/interval/step-05.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "3d7b38bf70b804d0a37f4a0cf4e8a583f64e412ef0973913b612619fe4d8e490",
+      "displaySha256": "d85218d3e363bf372d7290927d4fe97100a7ef8befdece6765f5c1d3685e4379"
+    },
+    "/demo/trace/interval/step-06.webp": {
+      "display": "/demo/retina/trace/interval/step-06.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "54b032bb7d25145c3fd95daf9ae3c3c53c4d0c455925aec58d67bf50c21cdf38",
+      "displaySha256": "6a210d65e6512ad5b6333161fc42e8e02cd1143e0f6046269627cf458eb691cc"
+    },
+    "/demo/trace/interval/step-07.webp": {
+      "display": "/demo/retina/trace/interval/step-07.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "ce389eced936e2022b0077f389966ee803f006fc64d39196a532ff2d2f0c4cc5",
+      "displaySha256": "84e3c774e10b1744b46b95e03e0fbba946c684732dccf29c1c3c941884a919a0"
+    },
+    "/demo/trace/interval/step-08.webp": {
+      "display": "/demo/retina/trace/interval/step-08.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "ddb8efc715144d680aa95f33bc74644c75b78440a0f9b84db5d3d1ee4f8ebefd",
+      "displaySha256": "6b9af16f81c724bfd9733d7262f958ca5052a82205dc2c305215f7e25257d653"
+    },
+    "/demo/trace/interval/step-09.webp": {
+      "display": "/demo/retina/trace/interval/step-09.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "3ba6cd3d68b41c058c5f84a80bbee88de22e34033419fbdfb5b205d4166e6814",
+      "displaySha256": "35f98bd19b054a902a4f15f5a04e28380ee2982fb2667bb0ac52916a6fe2056b"
+    },
+    "/demo/trace/interval/step-10.webp": {
+      "display": "/demo/retina/trace/interval/step-10.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "c45324153286136c8450830bb24c5aa5b9e1ec68da4857b435c58e04483f0626",
+      "displaySha256": "3f337f616a2f2f393d77907e0809b99d627a4d29a239225f4bb232e321d36b2e"
+    },
+    "/demo/trace/interval/step-11.webp": {
+      "display": "/demo/retina/trace/interval/step-11.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "3a08e642cf66bd723e1fd4b2a5e52131fa7bfa0d7dd18a731e995085bb333595",
+      "displaySha256": "1c4a068c0d203beea1baa1dbc214b583340356b597d00bf74572762eacbcdb0b"
+    },
+    "/demo/trace/interval/step-12.webp": {
+      "display": "/demo/retina/trace/interval/step-12.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "e8238298b216b61ba2a0194c275329bdaa0bd24c7ae96be33f1d5a4ac3696667",
+      "displaySha256": "8fcd390814c376e6908ec83b8720421a0efef2b606ed9bc59886eab3a72aba70"
+    },
+    "/demo/trace/shared/step-00.webp": {
+      "display": "/demo/retina/trace/shared/step-00.webp",
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "displayWidth": 1024,
+      "displayHeight": 1024,
+      "sourceSha256": "43859442ef1123916f9cd4773e26d54f04c7e1ec37110fd1922683a1f6f111e4",
+      "displaySha256": "289a0e8d3da85a13f5e68ca81f6b7818cbbf545be2661822c5223d4b09dd1d69"
+    }
+  }
+}

@@ -1,13 +1,14 @@
 {
   "name": "guidance-stability-lab",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
+    "assets:retina": "python3 scripts/generate_retina_assets.py --clean",
     "verify:data": "python3 scripts/verify_public_bundle.py",
     "test:e2e": "playwright test",
     "test:e2e:update": "playwright test --update-snapshots"

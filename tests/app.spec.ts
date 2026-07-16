@@ -8,9 +8,28 @@ test.beforeEach(async ({ page }) => {
 
 test('lab exposes the exact trace and clipping overlay', async ({ page }, testInfo) => {
   const isMobile = testInfo.project.name.includes('mobile')
+  const nativeOutputs = page.locator('.native-output:visible')
+  await expect(page.getByRole('heading', { name: /futuristic glass research station/i })).toBeVisible()
+  await expect(nativeOutputs).toHaveCount(isMobile ? 1 : 3)
+  await expect(page.locator('.native-image-stage img').first()).toHaveJSProperty('naturalWidth', 1024)
+
+  if (isMobile) {
+    await page.locator('.native-hero-switch').getByRole('button', { name: 'CFG' }).click()
+    await expect(page.locator('.native-output[data-scheme="cfg"]')).toBeVisible()
+  }
+
   const visiblePanels = page.locator('.comparison-panel:visible')
+  const visibleExperimentImages = page.locator('.image-stage > img:first-child:visible')
   await expect(visiblePanels).toHaveCount(isMobile ? 1 : 3)
+  await expect(visibleExperimentImages).toHaveCount(isMobile ? 1 : 3)
   await expect(page.getByText('Step 12/12')).toBeVisible()
+  expect(await visibleExperimentImages.evaluateAll((images) => images.map((image) => image.getAttribute('data-render-mode'))))
+    .toEqual(Array(isMobile ? 1 : 3).fill('retina'))
+
+  await page.getByRole('button', { name: 'Raw 512' }).click()
+  expect(await visibleExperimentImages.evaluateAll((images) => images.map((image) => image.getAttribute('data-render-mode'))))
+    .toEqual(Array(isMobile ? 1 : 3).fill('raw'))
+  await page.getByRole('button', { name: 'Retina' }).click()
 
   await page.getByRole('button', { name: 'X-ray' }).click()
   await expect(page.locator('.mask-layer:visible')).toHaveCount(isMobile ? 1 : 3)
@@ -20,7 +39,7 @@ test('lab exposes the exact trace and clipping overlay', async ({ page }, testIn
   await page.getByTitle('Pause trace').click()
 
   if (isMobile) {
-    await page.getByRole('button', { name: /CFG/ }).click()
+    await page.locator('.mobile-scheme-switch').getByRole('button', { name: 'CFG' }).click()
     await expect(page.locator('.comparison-panel[data-scheme="cfg"]')).toBeVisible()
   }
 
