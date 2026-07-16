@@ -27,11 +27,19 @@ jobs:
           node-version: 22
           cache: npm
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          python -m pip install -r requirements-verify.txt
 
       - name: Verify source bundle
         run: |
