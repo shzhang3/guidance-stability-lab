@@ -101,31 +101,6 @@ interface RetinaManifest {
   assets: Record<string, RetinaAsset>
 }
 
-interface SdxlScheme {
-  image: string
-  mask: string
-  sha256: string
-  saturation: number
-  coefficientMin: number
-  coefficientFinal: number
-  latentNormMax: number
-}
-
-interface SdxlManifest {
-  scope: string
-  selection: string
-  model: string
-  scheduler: string
-  prompt: string
-  seed: number
-  guidanceScale: number
-  w: number
-  numSteps: number
-  height: number
-  width: number
-  schemes: Record<Scheme, SdxlScheme>
-}
-
 interface EvidenceScheme {
   fid: number
   kid: number
@@ -305,23 +280,35 @@ function CoefficientChart({ trace, step }: { trace: TraceManifest; step: number 
   )
 }
 
-function NativeHero({ manifest }: { manifest: SdxlManifest }) {
+function SecondaryShowcase({
+  sample,
+  source,
+  retina,
+}: {
+  sample: DemoSample
+  source: FinalManifest['source']
+  retina: RetinaManifest
+}) {
   const [selected, setSelected] = useState<Scheme>('fitted')
+  const cfg = sample.schemes.cfg
+  const fitted = sample.schemes.fitted
+  const interval = sample.schemes.interval
+
   return (
-    <section className="native-hero native-transfer" aria-labelledby="native-hero-title">
-      <div className="native-hero-heading">
+    <section className="showcase secondary-showcase" aria-labelledby="secondary-showcase-title">
+      <div className="showcase-heading">
         <div>
-          <span className="eyebrow">Native-resolution transfer · Stable Diffusion XL</span>
-          <h2 id="native-hero-title">{manifest.prompt}</h2>
+          <span className="eyebrow">Fixed secondary case · Stable Diffusion 1.5</span>
+          <h2 id="secondary-showcase-title">{sample.prompt}</h2>
         </div>
-        <div className="native-hero-facts" aria-label="SDXL run configuration">
-          <span><small>Guidance</small><strong>{manifest.guidanceScale}</strong></span>
-          <span><small>NFE</small><strong>{manifest.numSteps}</strong></span>
-          <span><small>Seed</small><strong>{manifest.seed}</strong></span>
+        <div className="showcase-facts" aria-label="Secondary run configuration">
+          <span><small>Guidance</small><strong>{source.guidanceScale}</strong></span>
+          <span><small>NFE</small><strong>{source.numSteps}</strong></span>
+          <span><small>Seed</small><strong>{sample.seed}</strong></span>
         </div>
       </div>
 
-      <div className="native-hero-switch segmented" aria-label="Visible SDXL method">
+      <div className="showcase-switch segmented" aria-label="Visible secondary method">
         {(Object.keys(schemeMeta) as Scheme[]).map((scheme) => (
           <button key={scheme} type="button" aria-pressed={selected === scheme} onClick={() => setSelected(scheme)}>
             <MethodMark scheme={scheme} />{schemeMeta[scheme].short}
@@ -329,28 +316,38 @@ function NativeHero({ manifest }: { manifest: SdxlManifest }) {
         ))}
       </div>
 
-      <div className="native-hero-grid">
+      <div className="showcase-grid">
         {(Object.keys(schemeMeta) as Scheme[]).map((scheme) => {
-          const entry = manifest.schemes[scheme]
+          const entry = sample.schemes[scheme]
           return (
             <figure
               key={scheme}
-              className={`native-output ${selected === scheme ? 'is-selected' : ''}`}
+              className={`showcase-output ${selected === scheme ? 'is-selected' : ''}`}
               data-scheme={scheme}
             >
-              <div className="native-image-stage">
-                <img src={assetUrl(entry.image)} alt={`${schemeMeta[scheme].label} SDXL output`} draggable={false} />
+              <div className="showcase-image-stage">
+                <img
+                  src={assetUrl(renderedAsset(entry.image, retina, 'retina'))}
+                  alt={`${schemeMeta[scheme].label} output for the zebra stress case`}
+                  draggable={false}
+                />
                 <div className="method-label"><MethodMark scheme={scheme} />{schemeMeta[scheme].label}</div>
               </div>
               <figcaption>
-                <span><small>Native pixels</small><strong>{manifest.width}²</strong></span>
                 <span><small>Near-clipped RGB</small><strong>{percent(entry.saturation, 2)}</strong></span>
+                <span><small>CLIP</small><strong>{format(entry.clipScore, 3)}</strong></span>
               </figcaption>
             </figure>
           )
         })}
       </div>
-      <p className="native-hero-scope">{manifest.scope} Same prompt, seed, network, schedule, and NFE.</p>
+      <p className="showcase-scope">
+        Portfolio-selected from the fixed eight-example bundle. Same prompt, seed, network, schedule, and NFE.
+        Fitted reduces near-clipped RGB from {percent(cfg.saturation, 2)} to {percent(fitted.saturation, 2)} while
+        CLIP changes from {format(cfg.clipScore, 3)} to {format(fitted.clipScore, 3)}; terminal shutdown reaches{' '}
+        {percent(interval.saturation, 2)} clipping but falls to {format(interval.clipScore, 3)} CLIP. This matched
+        example is illustrative, not a benchmark endpoint.
+      </p>
     </section>
   )
 }
@@ -359,12 +356,10 @@ function LabView({
   finalManifest,
   trace,
   retina,
-  sdxl,
 }: {
   finalManifest: FinalManifest
   trace: TraceManifest | null
   retina: RetinaManifest
-  sdxl: SdxlManifest | null
 }) {
   const [selectedIndex, setSelectedIndex] = useState(finalManifest.samples[0].promptIndex)
   const [step, setStep] = useState(trace?.numSteps ?? finalManifest.source.numSteps)
@@ -373,6 +368,7 @@ function LabView({
   const [mobileScheme, setMobileScheme] = useState<Scheme>('fitted')
   const [renderMode, setRenderMode] = useState<RenderMode>('retina')
   const sample = finalManifest.samples.find((entry) => entry.promptIndex === selectedIndex) ?? finalManifest.samples[0]
+  const secondarySample = finalManifest.samples.find((entry) => entry.promptIndex === 20)
   const traceActive = Boolean(trace && sample.seed === trace.seed)
   const isPrimaryStressCell = sample.promptIndex === finalManifest.samples[0].promptIndex
   const maxStep = trace?.numSteps ?? finalManifest.source.numSteps
@@ -567,7 +563,9 @@ function LabView({
         Retina mode uses the same deterministic 2x display transform for every method. Raw 512 remains the experiment source.
       </p>
 
-      {sdxl && <NativeHero manifest={sdxl} />}
+      {secondarySample && (
+        <SecondaryShowcase sample={secondarySample} source={finalManifest.source} retina={retina} />
+      )}
 
       <section className="example-strip" aria-labelledby="examples-heading">
         <div className="section-heading">
@@ -807,7 +805,6 @@ function App() {
   const final = useJson<FinalManifest>('/demo/final/manifest.json')
   const trace = useJson<TraceManifest>('/demo/trace/manifest.json')
   const retina = useJson<RetinaManifest>('/demo/retina/manifest.json')
-  const sdxl = useJson<SdxlManifest>('/demo/sdxl/manifest.json')
   const evidence = useJson<EvidenceManifest>('/demo/evidence.json')
   const ready = final.data && retina.data && evidence.data
 
@@ -835,7 +832,7 @@ function App() {
           </div>
         )}
         {ready && view === 'lab' && (
-          <LabView finalManifest={final.data!} trace={trace.data} retina={retina.data!} sdxl={sdxl.data} />
+          <LabView finalManifest={final.data!} trace={trace.data} retina={retina.data!} />
         )}
         {ready && view === 'atlas' && <AtlasView evidence={evidence.data!} />}
         {ready && view === 'build' && <BuildView finalManifest={final.data!} evidence={evidence.data!} retina={retina.data!} />}

@@ -2,6 +2,8 @@
 
 Interactive research-engineering portfolio for fitted classifier-free guidance.
 
+**Live demo:** <https://shzhang3.github.io/guidance-stability-lab/>
+
 The lab turns one numerical mechanism into an inspectable product: vanilla
 DDIM+CFG uses the coefficient `w(r - 1)`, while fitted CFG replaces it with
 `r^(1+w) - r`. The model, prompt, seed, schedule, and network evaluations stay
@@ -11,7 +13,8 @@ fixed.
 
 - **Lab:** a representative SD1.5 stress cell with matched CFG / fitted /
   interval outputs, exact step playback, coefficient traces, and a
-  clipped-pixel X-ray, followed by a scoped native-1024 SDXL transfer demo.
+  clipped-pixel X-ray, followed by a fixed secondary SD1.5 case that separates
+  fitted stabilization from terminal guidance shutdown.
 - **Atlas:** a clickable `w x N` CIFAR-10 EDM grid backed by 5k-image cells,
   plus two 5k Stable Diffusion transfer summaries.
 - **Build:** the sampler diff, artifact contract, GPU architecture, source
@@ -43,10 +46,12 @@ The top visual and exact replay use Stable Diffusion 1.5 with deterministic
 DDIM at `guidance_scale=12`, `N=12`, prompt index `36`, and seed `20300036`.
 The representative cell was selected from a fixed 64-prompt block by the
 recorded CFG-minus-fitted near-clipping gap, then checked for visual legibility.
-A native `1024 x 1024` Stable Diffusion XL transfer demo at
-`guidance_scale=12`, `N=20`, and seed `260715` appears later as a fixed visual
-showcase, not a benchmark endpoint. All matched schemes share their initial
-latent and network calls.
+The secondary zebra case is prompt index `20`, seed `20300020`, from the fixed
+eight-example bundle. At the same `guidance_scale=12` and `N=12`, fitted CFG
+reduces near-clipped RGB from `6.47%` to `0.01%` while CLIP changes from `0.336`
+to `0.339`; terminal shutdown reaches `0%` clipping but drops to `0.275` CLIP.
+It is a portfolio-selected illustration, not a benchmark endpoint. All matched
+schemes share their initial latent and network calls.
 
 - Fixed final outputs come from the 1k matched-seed run in the sibling
   `guided-cfg-ap` research repository.
@@ -94,21 +99,6 @@ rsync -az \
   public/demo/trace/
 ```
 
-Generate the fixed native-1024 SDXL triplet:
-
-```bash
-rsync -az scripts/generate_sdxl_hero.py \
-  hyak-klone:/gscratch/amath/shzhang3/guidance-stability-lab/scripts/
-rsync -az slurm/generate_sdxl_hero.sbatch \
-  hyak-klone:/gscratch/amath/shzhang3/guidance-stability-lab/slurm/
-ssh hyak-klone \
-  'cd /gscratch/amath/shzhang3/guidance-stability-lab && \
-   sbatch slurm/generate_sdxl_hero.sbatch'
-rsync -az \
-  hyak-klone:/gscratch/amath/shzhang3/guidance-stability-lab/results/sdxl-hero/ \
-  public/demo/sdxl/
-```
-
 ## Architecture
 
 ```text
@@ -130,5 +120,5 @@ the portfolio experience and must not silently modify the paper.
 Fitted CFG is presented here as a high-guidance stabilizer, not as a universal
 image-quality improvement. CIFAR KID can favor vanilla CFG, interval guidance
 can win FID in some higher-step cells, and Stable Diffusion evidence currently
-covers two deterministic DDIM settings. The SDXL triplet demonstrates native
-resolution transfer only; it does not extend the paper's quantitative claim.
+covers two deterministic DDIM settings. The secondary zebra case explains the
+mechanism visually; it does not extend the paper's quantitative claim.

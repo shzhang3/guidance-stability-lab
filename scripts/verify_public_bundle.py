@@ -42,7 +42,6 @@ def main() -> int:
     final = json.loads((DEMO / "final/manifest.json").read_text())
     trace = json.loads((DEMO / "trace/manifest.json").read_text())
     retina = json.loads((DEMO / "retina/manifest.json").read_text())
-    sdxl = json.loads((DEMO / "sdxl/manifest.json").read_text())
     evidence = json.loads((DEMO / "evidence.json").read_text())
 
     expected_retina_sources: set[str] = set()
@@ -58,6 +57,20 @@ def main() -> int:
             if sha256(image) != entry["sha256"]:
                 raise AssertionError(f"SHA256 mismatch: {image}")
             expected_retina_sources.add(entry["image"])
+
+    secondary = next((sample for sample in final["samples"] if sample["promptIndex"] == 20), None)
+    if secondary is None:
+        raise AssertionError("secondary zebra showcase is missing from the fixed prompt bundle")
+    secondary_cfg = secondary["schemes"]["cfg"]
+    secondary_fitted = secondary["schemes"]["fitted"]
+    secondary_interval = secondary["schemes"]["interval"]
+    if not float(secondary_fitted["saturation"]) < float(secondary_cfg["saturation"]):
+        raise AssertionError("secondary showcase does not reduce near-clipped RGB")
+    if not float(secondary_fitted["clipScore"]) >= float(secondary_cfg["clipScore"]):
+        raise AssertionError("secondary showcase does not preserve CFG CLIP score")
+    if not float(secondary_fitted["clipScore"]) > float(secondary_interval["clipScore"]):
+        raise AssertionError("secondary showcase does not separate fitted CFG from terminal shutdown")
+    print("[showcase] fixed zebra triplet and metric ordering verified")
 
     primary = final["samples"][0]
     if trace["prompt"] != primary["prompt"] or trace["seed"] != primary["seed"]:
@@ -106,36 +119,6 @@ def main() -> int:
             if display_image.size != (source_image.width * 2, source_image.height * 2):
                 raise AssertionError(f"retina dimensions mismatch: {source_name}")
     print(f"[retina] {len(retina_assets)} display derivatives verified")
-
-    if (sdxl["width"], sdxl["height"]) != (1024, 1024):
-        raise AssertionError("SDXL hero must remain native 1024")
-    if set(sdxl["schemes"]) != set(SCHEMES):
-        raise AssertionError("SDXL hero is missing a matched scheme")
-    sdxl_w = float(sdxl["w"])
-    cfg_final = float(sdxl["schemes"]["cfg"]["coefficientFinal"])
-    final_r = 1.0 + cfg_final / sdxl_w
-    if not 0.0 <= final_r <= 1.0:
-        raise AssertionError("SDXL final schedule ratio is invalid")
-    final_h = math.inf if final_r == 0.0 else -math.log(final_r)
-    expected_final_coefficients = {
-        "cfg": sdxl_w * (final_r - 1.0),
-        "fitted": final_r ** (1.0 + sdxl_w) - final_r,
-        "interval": 0.0 if final_h > math.log1p(1.0 / sdxl_w) else sdxl_w * (final_r - 1.0),
-    }
-    for scheme in SCHEMES:
-        entry = sdxl["schemes"][scheme]
-        image = public_path(entry["image"])
-        mask = public_path(entry["mask"])
-        if not image.is_file() or not mask.is_file():
-            raise AssertionError(f"SDXL hero asset missing: {scheme}")
-        if sha256(image) != entry["sha256"]:
-            raise AssertionError(f"SDXL SHA256 mismatch: {scheme}")
-        with Image.open(image) as opened:
-            if opened.size != (1024, 1024):
-                raise AssertionError(f"SDXL dimensions mismatch: {scheme}")
-        if abs(float(entry["coefficientFinal"]) - expected_final_coefficients[scheme]) > 1e-10:
-            raise AssertionError(f"SDXL terminal coefficient mismatch: {scheme}")
-    print("[sdxl] native-1024 matched triplet verified")
 
     cells = evidence["cifar"]["cells"]
     if len(cells) != 9:

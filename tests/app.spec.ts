@@ -8,14 +8,15 @@ test.beforeEach(async ({ page }) => {
 
 test('lab exposes the exact trace and clipping overlay', async ({ page }, testInfo) => {
   const isMobile = testInfo.project.name.includes('mobile')
-  const nativeOutputs = page.locator('.native-output:visible')
-  await expect(page.getByRole('heading', { name: /futuristic glass research station/i })).toBeVisible()
-  await expect(nativeOutputs).toHaveCount(isMobile ? 1 : 3)
-  await expect(page.locator('.native-image-stage img').first()).toHaveJSProperty('naturalWidth', 1024)
+  const showcaseOutputs = page.locator('.showcase-output:visible')
+  await expect(page.getByRole('heading', { name: /zebra in the grass/i })).toBeVisible()
+  await expect(showcaseOutputs).toHaveCount(isMobile ? 1 : 3)
+  await expect(page.locator('.showcase-image-stage img').first()).toHaveJSProperty('naturalWidth', 1024)
+  await expect(page.getByText(/CLIP changes from 0.336 to 0.339/)).toBeVisible()
 
   if (isMobile) {
-    await page.locator('.native-hero-switch').getByRole('button', { name: 'CFG' }).click()
-    await expect(page.locator('.native-output[data-scheme="cfg"]')).toBeVisible()
+    await page.locator('.showcase-switch').getByRole('button', { name: 'CFG' }).click()
+    await expect(page.locator('.showcase-output[data-scheme="cfg"]')).toBeVisible()
   }
 
   const visiblePanels = page.locator('.comparison-panel:visible')

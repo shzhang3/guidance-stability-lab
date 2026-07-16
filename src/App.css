@@ -126,13 +126,13 @@ main {
   padding: 22px clamp(14px, 3vw, 44px) 64px;
 }
 
-.native-hero {
+.showcase {
   padding: 4px 0 18px;
   margin-bottom: 14px;
   border-bottom: 1px solid var(--line);
 }
 
-.native-hero-heading {
+.showcase-heading {
   display: flex;
   align-items: end;
   justify-content: space-between;
@@ -140,18 +140,18 @@ main {
   margin-bottom: 16px;
 }
 
-.native-hero-heading > div:first-child {
+.showcase-heading > div:first-child {
   max-width: 940px;
 }
 
-.native-hero-heading h2 {
+.showcase-heading h2 {
   margin-top: 7px;
   font-size: 28px;
   line-height: 1.2;
   font-weight: 620;
 }
 
-.native-hero-facts {
+.showcase-facts {
   display: flex;
   flex: 0 0 auto;
   border: 1px solid var(--line);
@@ -160,7 +160,7 @@ main {
   background: var(--surface);
 }
 
-.native-hero-facts span {
+.showcase-facts span {
   min-width: 74px;
   display: grid;
   gap: 2px;
@@ -169,27 +169,27 @@ main {
   text-align: center;
 }
 
-.native-hero-facts span:last-child { border-right: 0; }
-.native-hero-facts small,
-.native-output figcaption small {
+.showcase-facts span:last-child { border-right: 0; }
+.showcase-facts small,
+.showcase-output figcaption small {
   color: var(--muted);
   font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
 }
 
-.native-hero-facts strong,
-.native-output figcaption strong {
+.showcase-facts strong,
+.showcase-output figcaption strong {
   font-size: 13px;
   font-variant-numeric: tabular-nums;
 }
 
-.native-hero-switch {
+.showcase-switch {
   display: none;
   margin-bottom: 9px;
 }
 
-.native-hero-grid {
+.showcase-grid {
   width: min(1120px, 100%);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -197,7 +197,7 @@ main {
   margin: 0 auto;
 }
 
-.native-output {
+.showcase-output {
   min-width: 0;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -205,45 +205,45 @@ main {
   background: var(--surface);
 }
 
-.native-output.is-selected { border-color: var(--line-strong); }
+.showcase-output.is-selected { border-color: var(--line-strong); }
 
-.native-image-stage {
+.showcase-image-stage {
   position: relative;
   aspect-ratio: 1;
   overflow: hidden;
   background: #090a09;
 }
 
-.native-image-stage img {
+.showcase-image-stage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.native-output figcaption {
+.showcase-output figcaption {
   min-height: 42px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   border-top: 1px solid var(--line);
 }
 
-.native-output figcaption span {
+.showcase-output figcaption span {
   display: grid;
   gap: 2px;
   padding: 7px 10px;
   border-right: 1px solid var(--line);
 }
 
-.native-output figcaption span:last-child { border-right: 0; }
+.showcase-output figcaption span:last-child { border-right: 0; }
 
-.native-hero-scope {
+.showcase-scope {
   margin-top: 8px;
   color: var(--muted);
   font-size: 11px;
   line-height: 1.45;
 }
 
-.native-transfer {
+.secondary-showcase {
   margin-top: 30px;
   padding-top: 28px;
   border-top: 1px solid var(--line);
@@ -1201,16 +1201,16 @@ footer span:first-child {
   .view { padding: 12px 12px 44px; }
   .stress-hero { padding-top: 8px; margin-bottom: 12px; }
   .stress-hero-heading { align-items: stretch; flex-direction: column; gap: 12px; }
-  .native-hero { padding-top: 8px; margin-bottom: 16px; }
-  .native-hero-heading { align-items: stretch; flex-direction: column; gap: 12px; }
-  .native-hero-heading h2 { font-size: 22px; }
-  .native-hero-facts { width: 100%; }
-  .native-hero-facts span { min-width: 0; flex: 1; }
-  .native-hero-switch { display: flex; width: 100%; }
-  .native-hero-switch button { flex: 1; padding: 6px 7px; }
-  .native-hero-grid { display: block; }
-  .native-output { display: none; }
-  .native-output.is-selected { display: block; }
+  .showcase { padding-top: 8px; margin-bottom: 16px; }
+  .showcase-heading { align-items: stretch; flex-direction: column; gap: 12px; }
+  .showcase-heading h2 { font-size: 22px; }
+  .showcase-facts { width: 100%; }
+  .showcase-facts span { min-width: 0; flex: 1; }
+  .showcase-switch { display: flex; width: 100%; }
+  .showcase-switch button { flex: 1; padding: 6px 7px; }
+  .showcase-grid { display: block; }
+  .showcase-output { display: none; }
+  .showcase-output.is-selected { display: block; }
   .lab-toolbar { align-items: stretch; flex-wrap: wrap; }
   .prompt-field { min-width: 100%; }
   .run-facts { flex: 1; }
