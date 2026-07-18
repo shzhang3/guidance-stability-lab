@@ -4,6 +4,8 @@ Interactive research-engineering portfolio for fitted classifier-free guidance.
 
 **Live demo:** <https://shzhang3.github.io/guidance-stability-lab/>
 
+**Reference implementation:** <https://github.com/shzhang3/fitted-cfg>
+
 The lab turns one numerical mechanism into an inspectable product: vanilla
 DDIM+CFG uses the coefficient `w(r - 1)`, while fitted CFG replaces it with
 `r^(1+w) - r`. The model, prompt, seed, schedule, and network evaluations stay

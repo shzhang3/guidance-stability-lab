@@ -780,7 +780,17 @@ function BuildView({
       <section className="provenance-section">
         <div className="section-heading">
           <div><span className="eyebrow">Reproducibility</span><h2>Artifact provenance</h2></div>
-          <a className="text-button" href={assetUrl('/demo/final/manifest.json')}><FileJson size={17} />Manifest</a>
+          <div className="section-actions">
+            <a
+              className="text-button"
+              href="https://github.com/shzhang3/fitted-cfg"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Braces size={17} />Reference code
+            </a>
+            <a className="text-button" href={assetUrl('/demo/final/manifest.json')}><FileJson size={17} />Manifest</a>
+          </div>
         </div>
         <dl className="provenance-grid">
           <div><dt>Model</dt><dd>{finalManifest.source.model}</dd></div>
@@ -820,7 +830,17 @@ function App() {
           <button type="button" aria-current={view === 'atlas' ? 'page' : undefined} onClick={() => setView('atlas')}><Grid3X3 size={17} />Atlas</button>
           <button type="button" aria-current={view === 'build' ? 'page' : undefined} onClick={() => setView('build')}><Braces size={17} />Build</button>
         </nav>
-        <div className="header-status"><span />Exact matched trace</div>
+        <div className="header-actions">
+          <a
+            className="header-code"
+            href="https://github.com/shzhang3/fitted-cfg"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Braces size={16} />Code
+          </a>
+          <div className="header-status"><span />Exact matched trace</div>
+        </div>
       </header>
 
       <main>

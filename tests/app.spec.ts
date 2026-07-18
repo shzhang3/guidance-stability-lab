@@ -73,6 +73,10 @@ test('build view carries the sampler and provenance contract', async ({ page }, 
   await page.getByRole('button', { name: 'Build' }).click()
   await expect(page.getByRole('heading', { name: 'From theorem to inspectable software.' })).toBeVisible()
   await expect(page.getByText('r ** (1.0 + w) - r')).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Reference code' })).toHaveAttribute(
+    'href',
+    'https://github.com/shzhang3/fitted-cfg',
+  )
   await expect(page.getByText('d954e5686324ac71c6867afdf68b94d0db44c0cb1fc0642f92f1a3c284fead4a')).toBeVisible()
   await expect(page).toHaveScreenshot(`build-${isMobile ? 'mobile' : 'desktop'}.png`, { fullPage: true })
 })

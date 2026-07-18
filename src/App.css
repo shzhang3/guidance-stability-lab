@@ -99,8 +99,31 @@
   box-shadow: inset 0 0 0 1px var(--line-strong);
 }
 
-.header-status {
+.header-actions {
   justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.header-code {
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.header-code:hover {
+  border-color: var(--line-strong);
+  color: var(--fitted);
+}
+
+.header-status {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -387,6 +410,13 @@ select {
 .tool-button.is-active {
   border-color: var(--fitted);
   color: var(--fitted);
+}
+
+.section-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
 }
 
 .prompt-line {
@@ -1018,12 +1048,13 @@ select {
 .implementation-grid {
   margin-top: 36px;
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
   gap: 16px;
 }
 
 .code-panel,
 .reliability-list {
+  min-width: 0;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: var(--surface);
@@ -1179,7 +1210,7 @@ footer span:first-child {
     grid-template-columns: 1fr auto;
   }
   .primary-nav { order: 3; grid-column: 1 / -1; justify-self: center; }
-  .header-status { grid-column: 2; grid-row: 1; }
+  .header-actions { grid-column: 2; grid-row: 1; }
   .atlas-layout { grid-template-columns: 1fr; }
   .sample-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .ldm-row { grid-template-columns: 180px 1fr; }
@@ -1194,7 +1225,8 @@ footer span:first-child {
     padding: 8px 12px;
   }
   .brand strong { font-size: 13px; }
-  .brand small, .header-status { display: none; }
+  .brand small { display: none; }
+  .header-actions { display: none; }
   .primary-nav { grid-column: auto; grid-row: auto; order: initial; justify-self: end; }
   .primary-nav button { min-width: 38px; padding: 6px 9px; font-size: 0; }
   .primary-nav button svg { width: 18px; height: 18px; }
@@ -1244,7 +1276,7 @@ footer span:first-child {
   .ldm-numbers { grid-column: auto; }
   .architecture { grid-template-columns: 1fr; }
   .architecture-arrow { transform: rotate(90deg); justify-self: center; }
-  .implementation-grid { grid-template-columns: 1fr; }
+  .implementation-grid { grid-template-columns: minmax(0, 1fr); }
   .provenance-grid { grid-template-columns: 1fr 1fr; }
   footer { align-items: flex-start; flex-direction: column; }
 }
